@@ -21,6 +21,10 @@
   fill: var(--secondary);
 }
 
+.warning > svg > path {
+  fill: var(--warning);
+}
+
 .danger > svg > path {
   fill: var(--danger);
 }
@@ -37,7 +41,7 @@
   fill: var(--white);
 }
 
-.default > svg > path {
+.gray > svg > path {
   fill: var(--gray);
 }
 

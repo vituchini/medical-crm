@@ -1,6 +1,7 @@
-import { Breadcrumbs, Card, Checkbox, CircularLoader, Popup, RadioButton, Tabs } from '../common/components';
+import { Breadcrumbs, Button, Card, CircularLoader, Icon, Popup, RadioButton, Tabs } from '../common/components';
 import React, { useState } from 'react';
 
+import { IconTypes } from '../common/components/Icon/Icon';
 import style from './style.module.css';
 
 const Examples = () => {
@@ -10,12 +11,6 @@ const Examples = () => {
     value: 'on',
     label: 'On',
   });
-
-  const [checkbox1, setCheckbox1] = useState(false);
-  const [checkbox2, setCheckbox2] = useState(false);
-  const [checkbox3, setCheckbox3] = useState(false);
-  const [checkbox4, setCheckbox4] = useState(false);
-  const [checkbox5, setCheckbox5] = useState(false);
 
   const tabs = [
     { _id: '0', content: <>Tab</> },
@@ -44,15 +39,17 @@ const Examples = () => {
 
       <RadioButton name="radio" value={radio} options={radioItems} onChange={setRadio} column />
 
-      <CircularLoader />
+      <div style={{ position: 'relative', height: 100, width: '100%' }}>
+        <CircularLoader />
+      </div>
 
-      <button onClick={() => setVisible(true)}>show popup</button>
+      <Button onClick={() => setVisible(true)}>Show popup</Button>
 
       <Popup visible={visible} onClose={() => setVisible(false)}>
         <h1>test</h1>
       </Popup>
 
-      <div style={{ display: 'flex', gap: '16px', margin: '16px 0' }}>
+      <div className={style.flex}>
         <Card header="Title">
           <p>First paragraph</p>
           <p>Second</p>
@@ -61,35 +58,42 @@ const Examples = () => {
         <Card />
       </div>
 
-      <div>
-        <Checkbox checked={checkbox1} name="1" onChange={() => setCheckbox1(!checkbox1)} />
-      </div>
-      <div>
-        <Checkbox rightText="right text" name="2" checked={checkbox2} onChange={() => setCheckbox2(!checkbox2)} />
-      </div>
-      <div>
-        <Checkbox leftText="left text" name="3" checked={checkbox3} onChange={() => setCheckbox3(!checkbox3)} />
-      </div>
-      <div>
-        <Checkbox
-          rightText="error checkbox"
-          error={true}
-          name="4"
-          checked={checkbox4}
-          onChange={() => setCheckbox4(!checkbox4)}
-        />
-      </div>
-      <div>
-        <Checkbox
-          rightText="disabled checkbox"
-          disabled={true}
-          name="5"
-          checked={checkbox5}
-          onChange={() => setCheckbox5(!checkbox5)}
-        />
+      <div className={style.flex}>
+        {(Object.keys(IconTypes) as Array<keyof typeof IconTypes>).map((type) => (
+          <Icon type={IconTypes[type]} iconColor="primary" size={24} />
+        ))}
       </div>
 
       <Tabs list={tabs} current={currentTab} onChange={(tab) => setCurrentTab(tab)} />
+
+      <div className={style.flex}>
+        <Button>Primary button</Button>
+        <Button icon={IconTypes.add} color="secondary">
+          Secondary button
+        </Button>
+        <Button type="border">Primary button</Button>
+        <Button color="secondary" type="border" icon={IconTypes.add}>
+          Secondary button
+        </Button>
+        <Button color="primary" icon={IconTypes.add} />
+      </div>
+      <div className={style.flex} style={{ maxWidth: 800 }}>
+        <Button size="small" color="gray">
+          Gray button
+        </Button>
+        <Button size="small" icon={IconTypes.notification} color="warning">
+          Warning button
+        </Button>
+        <Button size="small" type="border" color="success">
+          Success button
+        </Button>
+        <Button size="small" color="danger" type="border" icon={IconTypes.error}>
+          Danger button
+        </Button>
+        <Button size="fullWidth" color="primary" icon={IconTypes.add}>
+          Button with full parent width
+        </Button>
+      </div>
     </div>
   );
 };

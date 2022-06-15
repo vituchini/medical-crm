@@ -91,7 +91,7 @@ export enum IconTypes {
   import = 'import',
 }
 
-type IconColor = 'white' | 'default' | 'primary' | 'secondary' | 'warning' | 'danger' | 'success' | 'light-gray';
+type IconColor = 'white' | 'gray' | 'primary' | 'secondary' | 'warning' | 'danger' | 'success' | 'light-gray' | 'black';
 
 type IconProps = {
   type?: IconTypes;
@@ -195,7 +195,7 @@ const iconByType = (type?: IconTypes) => {
   }
 };
 
-const Icon = ({ iconColor = 'default', size = 24, type }: IconProps) => {
+const Icon = ({ iconColor = 'gray', size = 24, type }: IconProps) => {
   return (
     <span className={`${styles.container} ${styles[iconColor!]}`} style={{ height: size, width: size }}>
       {iconByType(type)}
