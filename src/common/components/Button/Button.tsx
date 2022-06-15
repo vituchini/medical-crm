@@ -15,18 +15,9 @@ export type ButtonProps = {
   disabled?: boolean;
   onClick?: (event: any) => void;
   children?: ReactNode | ReactNode[];
-  icon?: IconTypes;
 };
 
-const Button = ({
-  children,
-  icon,
-  color = 'primary',
-  size = 'medium',
-  type = 'fill',
-  onClick,
-  disabled,
-}: ButtonProps) => {
+const Button = ({ children, color = 'primary', size = 'medium', type = 'fill', onClick, disabled }: ButtonProps) => {
   const buttonColor = `${color}-${type}`;
   return (
     <button
@@ -34,8 +25,7 @@ const Button = ({
       onClick={onClick}
       disabled={disabled}
     >
-      {children && children}
-      {icon && <Icon type={icon} size={size === 'small' ? 12 : 18} iconColor={type === 'fill' ? 'white' : color} />}
+      {children}
     </button>
   );
 };

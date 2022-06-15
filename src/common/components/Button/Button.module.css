@@ -1,15 +1,6 @@
 .button {
-  display: flex;
-  gap: 8px;
   border-radius: 4px;
-  font-family: 'Arial';
-  font-style: normal;
-  font-weight: 700;
-  font-size: 12px;
-  line-height: 20px;
   padding: 6px 12px;
-  align-items: center;
-  justify-content: center;
 }
 
 .button:hover {
@@ -107,5 +98,6 @@
 }
 
 .disabled:hover {
-  cursor: default;
+  cursor: not-allowed;
+  filter: brightness(1);
 }
