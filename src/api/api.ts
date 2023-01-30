@@ -5,7 +5,7 @@ class Http {
   unauthorized: (() => void) | undefined;
   errorMessage: any;
 
-  static async parseResponse (response: Response, responseType: string) {
+  static async parseResponse(response: Response, responseType: string) {
     switch (responseType) {
       case 'json':
         return response.json();
@@ -16,18 +16,12 @@ class Http {
     }
   }
 
-  constructor (options: { baseUrl: string }) {
+  constructor(options: { baseUrl: string }) {
     this.baseUrl = options.baseUrl;
     Object.assign(this, options);
   }
 
-  async request (url: string, {
-    headers = {},
-    method = 'GET',
-    responseType = 'json',
-    data
-  }: any = {}): Promise<any> {
-
+  async request(url: string, { headers = {}, method = 'GET', responseType = 'json', data }: any = {}): Promise<any> {
     url = this.baseUrl + url;
     const opts: any = { method };
 
@@ -43,7 +37,7 @@ class Http {
       opts.body = JSON.stringify(data);
       headers = {
         'Content-Type': 'application/json',
-        'Accept': 'application/json',
+        Accept: 'application/json',
         ...headers,
       };
     }
@@ -63,19 +57,19 @@ class Http {
     }
   }
 
-  get (url: string, opts?: { responseType?: string }): Promise<any> {
+  get(url: string, opts?: { responseType?: string }): Promise<any> {
     return this.request(url, { ...opts, method: 'GET' });
   }
 
-  post (url: string, opts?: { responseType?: string, data?: any }): Promise<any> {
+  post(url: string, opts?: { responseType?: string; data?: any }): Promise<any> {
     return this.request(url, { ...opts, method: 'POST' });
   }
 
-  put (url: string, opts?: { responseType?: string, data?: any }): Promise<any> {
+  put(url: string, opts?: { responseType?: string; data?: any }): Promise<any> {
     return this.request(url, { ...opts, method: 'PUT' });
   }
 
-  del (url: string, opts?: { responseType?: string }): Promise<any> {
+  del(url: string, opts?: { responseType?: string }): Promise<any> {
     return this.request(url, { ...opts, method: 'DELETE' });
   }
 }
