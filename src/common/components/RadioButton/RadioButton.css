@@ -1,0 +1,41 @@
+.radioGroup {
+  display: flex;
+  position: relative;
+  gap: 20px;
+}
+.radioStyled {
+  position: absolute;
+  cursor: pointer;
+  opacity: 0;
+}
+.radioButton {
+  position: relative;
+}
+.radioButton::before {
+  content: ' ';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 1px solid #415cb6;
+  background: transparent;
+}
+.radioButton > label {
+  align-items: center;
+  position: relative;
+  padding-left: 30px;
+  cursor: pointer;
+}
+.checked::before {
+  content: ' ';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  border: 8px solid #415cb6;
+  background: #fff;
+}
