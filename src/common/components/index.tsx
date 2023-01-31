@@ -1,3 +1,3 @@
-import CircularLoader from './CircularLoader/CircularLoader';
+import Breadcrumbs from './Breadcrumbs/Breadcrumbs';
 
-export { CircularLoader };
+export { Breadcrumbs };
