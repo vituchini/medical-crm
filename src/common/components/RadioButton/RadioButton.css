@@ -5,11 +5,19 @@
 }
 .radioStyled {
   position: absolute;
-  cursor: pointer;
   opacity: 0;
+}
+.column {
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-start;
 }
 .radioButton {
   position: relative;
+  line-height: 20px;
+}
+.pointer {
+  cursor: pointer;
 }
 .radioButton::before {
   content: ' ';
@@ -26,7 +34,6 @@
   align-items: center;
   position: relative;
   padding-left: 30px;
-  cursor: pointer;
 }
 .checked::before {
   content: ' ';

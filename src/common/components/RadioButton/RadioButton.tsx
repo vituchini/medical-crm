@@ -12,21 +12,21 @@ type RadioGroupProps<T> = {
   value: T;
   options: T[];
   convertToItem: (arg: T) => RadioGroupItem;
-  // labelProps?: SpanProps;
   onChange?: (arg: T, e: ChangeEvent<HTMLInputElement>) => void;
+  direction?: 'row' | 'column';
 };
 
 function RadioButton<T>(props: RadioGroupProps<T>) {
   const value = props.convertToItem(props.value);
   return (
-    <div className="radioGroup">
+    <div className={`radioGroup ${props.direction === 'column' ? 'column' : ''}`}>
       {props.options.map((option: any) => {
         const item = props.convertToItem(option);
         return (
-          <div className={`radioButton ${value.value === item.value && 'checked'}`} key={item.value}>
-            <label htmlFor={`${props.name}_${item.value}`}>
+          <div className={`radioButton ${value.value === item.value ? 'checked' : ''}`} key={item.value}>
+            <label htmlFor={`${props.name}_${item.value}`} className={`${value.value !== item.value ? 'pointer' : ''}`}>
               <input
-                className="radioStyled"
+                className={`radioStyled ${value.value !== item.value ? 'pointer' : ''}`}
                 name={props.name}
                 id={`${props.name}_${item.value}`}
                 type="radio"

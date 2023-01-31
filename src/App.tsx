@@ -22,7 +22,14 @@ function App() {
   return (
     <div className="App">
       Component examples
-      <RadioButton name="radio" value={radio} options={radioItems} convertToItem={(item) => item} onChange={setRadio} />
+      <RadioButton
+        name="radio"
+        value={radio}
+        options={radioItems}
+        convertToItem={(item) => item}
+        onChange={setRadio}
+        direction="column"
+      />
     </div>
   );
 }
