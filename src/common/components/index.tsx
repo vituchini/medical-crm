@@ -1,3 +1,3 @@
-import Popup from './Popup/Popup';
+import CircularLoader from './CircularLoader/CircularLoader';
 
-export { Popup };
+export { CircularLoader };
