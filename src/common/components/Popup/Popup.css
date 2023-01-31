@@ -1,0 +1,38 @@
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.container::after {
+  content: 'x';
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  font-size: 32px;
+  font-weight: 700;
+  color: #fff;
+  cursor: pointer;
+  padding: 24px;
+  border-radius: 50%;
+}
+
+.paper {
+  z-index: 101;
+  background: #fff;
+  padding: 24px 32px;
+  min-width: 400px;
+  min-height: 200px;
+  max-width: 80%;
+  max-height: 80%;
+}

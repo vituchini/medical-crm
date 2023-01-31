@@ -1,3 +1,3 @@
-import RadioButton from './RadioButton/RadioButton';
+import Popup from './Popup/Popup';
 
-export { RadioButton };
+export { Popup };

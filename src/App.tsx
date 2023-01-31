@@ -2,34 +2,19 @@ import './App.css';
 
 import React, { useState } from 'react';
 
-import { RadioButton } from './common/components';
+import { Popup } from './common/components';
 
 function App() {
-  const [radio, setRadio] = useState({
-    value: 'on',
-    label: 'On',
-  });
-  const radioItems = [
-    {
-      value: 'on',
-      label: 'On',
-    },
-    {
-      value: 'off',
-      label: 'Off',
-    },
-  ];
+  const [visible, setVisible] = useState(false);
   return (
     <div className="App">
       Component examples
-      <RadioButton
-        name="radio"
-        value={radio}
-        options={radioItems}
-        convertToItem={(item) => item}
-        onChange={setRadio}
-        direction="column"
-      />
+      <div>
+        <button onClick={() => setVisible(true)}>show popup</button>
+        <Popup visible={visible} setVisible={setVisible}>
+          <h1>test</h1>
+        </Popup>
+      </div>
     </div>
   );
 }
