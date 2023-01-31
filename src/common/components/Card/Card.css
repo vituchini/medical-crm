@@ -1,0 +1,43 @@
+.container {
+  flex: 1;
+  background: #fff;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  text-align: left;
+}
+.header {
+  display: flex;
+  gap: 8px;
+  padding: 16px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  font-family: 'Arial';
+}
+.title {
+  text-transform: capitalize;
+}
+.count {
+  height: 24px;
+  min-width: 16px;
+  text-align: center;
+  border-radius: 50%;
+  background: #ffa500;
+  color: #fff;
+  font-weight: 700;
+  padding: 0 4px;
+}
+
+.child {
+  padding: 16px;
+}
+
+.divider {
+  border-bottom: 1px solid #e5e5e5;
+  margin: 0;
+  padding: 0;
+}
+
+.divider-margin {
+  margin: 0 16px;
+}
