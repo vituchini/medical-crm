@@ -1,11 +1,15 @@
-import './CircularLoader.css';
+import styles from './CircularLoader.module.css';
 
 type CircularLoaderProps = {
-  visible?: boolean;
+  size?: number;
 };
 
-const CircularLoader = ({ visible }: CircularLoaderProps) => {
-  return <div className="container">{visible && <div className="loader"></div>}</div>;
+const CircularLoader = ({ size = 48 }: CircularLoaderProps) => {
+  return (
+    <div className={styles.container}>
+      <div className={styles.loader} style={{ width: `${size}px`, height: `${size}px` }}></div>
+    </div>
+  );
 };
 
 export default CircularLoader;

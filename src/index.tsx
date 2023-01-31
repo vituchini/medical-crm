@@ -1,5 +1,6 @@
 import './index.css';
 import './i18n';
+import './common/styles/colors.css';
 
 import App from './App';
 import { BrowserRouter } from 'react-router-dom';

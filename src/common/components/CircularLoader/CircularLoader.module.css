@@ -13,9 +13,7 @@
   border: none;
   border-radius: 50%;
   padding: 0.25em;
-  width: 3em;
-  height: 3em;
-  color: #415cb6;
+  color: var(--primary);
   background-color: transparent;
   font-size: 16px;
   overflow: hidden;
@@ -26,8 +24,10 @@
 }
 
 .loader {
-  -webkit-mask-image: linear-gradient(transparent 50%, black 50%), linear-gradient(to right, transparent 50%, black 50%);
-  mask-image: linear-gradient(transparent 50%, black 50%), linear-gradient(to right, transparent 50%, black 50%);
+  -webkit-mask-image: linear-gradient(transparent 50%, var(--black) 50%),
+    linear-gradient(to right, transparent 50%, var(--black) 50%);
+  mask-image: linear-gradient(transparent 50%, var(--black) 50%),
+    linear-gradient(to right, transparent 50%, var(--black) 50%);
   animation: circular-progress 6s infinite cubic-bezier(0.3, 0.6, 1, 1);
 }
 

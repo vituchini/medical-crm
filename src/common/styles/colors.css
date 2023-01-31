@@ -1,4 +1,9 @@
 :root {
-  --primary: black;
-  --secondary: white;
+  --primary: #415cb6;
+  --secondary: #582777;
+  --warning: #ffa500;
+  --danger: #ef4433;
+  --success: #50b83c;
+  --black: #000;
+  --white: #fff;
 }

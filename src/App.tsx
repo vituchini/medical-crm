@@ -1,13 +1,13 @@
 import './App.css';
 
-import { Breadcrumbs } from './common/components';
+import { CircularLoader } from './common/components';
 import React from 'react';
 
 function App() {
   return (
     <div className="App">
       Component examples
-      <Breadcrumbs breadcrumbs={[{ title: 'title' }, { title: 'subtitle' }]} />
+      <CircularLoader />
     </div>
   );
 }
