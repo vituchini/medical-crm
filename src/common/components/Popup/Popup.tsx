@@ -1,37 +1,25 @@
-import './Popup.css';
+import React, { useEffect } from 'react';
 
-import React, { useEffect, useState } from 'react';
+import styles from './Popup.module.css';
 
 type PopupProps = {
   visible: boolean;
-  setVisible: (visible: boolean) => void;
+  onClose: () => void;
   children: React.ReactNode;
 };
 
-const Popup: React.FC<PopupProps> = ({ visible, setVisible, children }) => {
+const Popup = ({ visible, onClose, children }: PopupProps) => {
+  const close = (e: KeyboardEvent) => e.code === 'Escape' && onClose();
   useEffect(() => {
-    const close = (e: KeyboardEvent) => {
-      if (e.code === 'Escape') {
-        setVisible(false);
-      }
-    };
     window.addEventListener('keydown', close);
     return () => window.removeEventListener('keydown', close);
   }, []);
   return visible ? (
-    <div
-      className="container center"
-      onClick={() => {
-        setVisible(false);
-      }}
-    >
-      <div className="paper" onClick={(e) => e.stopPropagation()}>
-        {children}
-      </div>
-    </div>
-  ) : (
-    <></>
-  );
+    <>
+      <div className={styles.container} onClick={onClose} />
+      <div className={styles.paper}>{children}</div>
+    </>
+  ) : null;
 };
 
 export default Popup;
