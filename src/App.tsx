@@ -1,6 +1,6 @@
 import './App.css';
 
-import { CircularLoader, RadioButton } from './common/components';
+import { Breadcrumbs, CircularLoader, RadioButton } from './common/components';
 import React, { useState } from 'react';
 
 function App() {
@@ -21,6 +21,7 @@ function App() {
   return (
     <div className="App">
       Component examples
+      <Breadcrumbs breadcrumbs={[{ title: 'title' }, { title: 'subtitle' }, { title: 'subsubtitle' }]} />
       <RadioButton name="radio" value={radio} options={radioItems} onChange={setRadio} column />
       <CircularLoader />
     </div>

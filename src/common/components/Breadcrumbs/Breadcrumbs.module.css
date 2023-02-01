@@ -5,39 +5,36 @@
   font-weight: 400;
   font-size: 14px;
   line-height: 20px;
-}
-.title-container {
   list-style: none;
   padding: 0;
   margin: 0;
 }
+
 .list {
-  max-width: 200px;
-  text-overflow: ellipsis;
-  overflow: hidden;
   white-space: nowrap;
+  text-align: left;
 }
 
 .list a {
   line-height: 20px;
   text-decoration: none;
   text-transform: capitalize;
-  color: black;
+  color: var(--black);
 }
 
-.container .list:after {
-  float: right;
+.list:not(:last-child) a:after {
   padding-left: 6px;
-  color: #000;
+  color: var(--black);
   content: '/';
 }
 
-.list-title {
+.list:last-child {
+  flex: 0 0 100%;
   font-size: 24px;
   line-height: 34px;
-  text-align: left;
 }
-.list-title a {
-  color: #415cb6;
+
+.list:last-child a {
+  color: var(--primary);
   cursor: default;
 }
