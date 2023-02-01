@@ -1,12 +1,27 @@
 import './App.css';
 
-import { CircularLoader } from './common/components';
-import React from 'react';
+import { CircularLoader, RadioButton } from './common/components';
+import React, { useState } from 'react';
 
 function App() {
+  const [radio, setRadio] = useState({
+    value: 'on',
+    label: 'On',
+  });
+  const radioItems = [
+    {
+      value: 'on',
+      label: 'On',
+    },
+    {
+      value: 'off',
+      label: 'Off',
+    },
+  ];
   return (
     <div className="App">
       Component examples
+      <RadioButton name="radio" value={radio} options={radioItems} onChange={setRadio} column />
       <CircularLoader />
     </div>
   );

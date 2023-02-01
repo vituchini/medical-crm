@@ -1,48 +1,48 @@
-import './RadioButton.css';
-
 import { ChangeEvent } from 'react';
+import styles from './RadioButton.module.css';
 
-type RadioGroupItem = {
+type RadioGroupOption = {
   value: string;
   label: string;
 };
 
-type RadioGroupProps<T> = {
+type RadioGroupProps = {
   name: string;
-  value: T;
-  options: T[];
-  convertToItem: (arg: T) => RadioGroupItem;
-  onChange?: (arg: T, e: ChangeEvent<HTMLInputElement>) => void;
-  direction?: 'row' | 'column';
+  value: RadioGroupOption;
+  options: RadioGroupOption[];
+  onChange?: (arg: RadioGroupOption, e: ChangeEvent<HTMLInputElement>) => void;
+  column?: boolean;
 };
 
-function RadioButton<T>(props: RadioGroupProps<T>) {
-  const value = props.convertToItem(props.value);
+const RadioButton = ({ onChange, value, column, options, name }: RadioGroupProps) => {
   return (
-    <div className={`radioGroup ${props.direction === 'column' ? 'column' : ''}`}>
-      {props.options.map((option: any) => {
-        const item = props.convertToItem(option);
+    <div className={`${styles.radioGroup} ${column ? styles.column : ''}`}>
+      {options.map((option: RadioGroupOption) => {
         return (
-          <div className={`radioButton ${value.value === item.value ? 'checked' : ''}`} key={item.value}>
-            <label htmlFor={`${props.name}_${item.value}`} className={`${value.value !== item.value ? 'pointer' : ''}`}>
+          <div
+            className={`${styles.radioButton} ${option.value === value.value ? styles.checked : ''}`}
+            key={option.value}
+          >
+            <label
+              htmlFor={`${name}_${option.value}`}
+              className={`${value.value !== option.value ? styles.pointer : ''}`}
+            >
               <input
-                className={`radioStyled ${value.value !== item.value ? 'pointer' : ''}`}
-                name={props.name}
-                id={`${props.name}_${item.value}`}
+                className={`${styles.radioStyled} ${value.value !== option.value ? styles.pointer : ''}`}
+                name={name}
+                id={`${name}_${option.value}`}
                 type="radio"
-                value={item.value}
-                checked={value.value === item.value}
-                onChange={(e) => {
-                  props.onChange && props.onChange(option, e);
-                }}
+                value={option.value}
+                checked={value.value === option.value}
+                onChange={(e) => onChange && onChange(option, e)}
               />
-              <span>{item.label}</span>
+              <span>{option.label}</span>
             </label>
           </div>
         );
       })}
     </div>
   );
-}
+};
 
 export default RadioButton;

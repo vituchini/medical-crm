@@ -3,22 +3,27 @@
   position: relative;
   gap: 20px;
 }
+
 .radioStyled {
   position: absolute;
   opacity: 0;
 }
+
 .column {
   flex-direction: column;
   gap: 8px;
   align-items: flex-start;
 }
+
 .radioButton {
   position: relative;
   line-height: 20px;
 }
+
 .pointer {
   cursor: pointer;
 }
+
 .radioButton::before {
   content: ' ';
   position: absolute;
@@ -27,14 +32,16 @@
   width: 18px;
   height: 18px;
   border-radius: 50%;
-  border: 1px solid #415cb6;
-  background: transparent;
+  border: 1px solid var(--primary);
+  background: var(--white);
 }
+
 .radioButton > label {
   align-items: center;
   position: relative;
   padding-left: 30px;
 }
+
 .checked::before {
   content: ' ';
   position: absolute;
@@ -43,6 +50,6 @@
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  border: 8px solid #415cb6;
-  background: #fff;
+  border: 8px solid var(--primary);
+  background: var(--white);
 }
