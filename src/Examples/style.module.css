@@ -1,0 +1,8 @@
+.container {
+  padding: 20px 80px;
+}
+
+.header {
+  font-size: 40px;
+  color: var(--primary);
+}

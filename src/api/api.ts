@@ -21,7 +21,10 @@ class Http {
     Object.assign(this, options);
   }
 
-  async request(url: string, { headers = {}, method = 'GET', responseType = 'json', data }: any = {}): Promise<any> {
+  async request(
+    url: string,
+    { headers = {}, method = 'GET', responseType = 'json', isPublic = false, data }: any = {},
+  ): Promise<any> {
     url = this.baseUrl + url;
     const opts: any = { method };
 
@@ -42,6 +45,8 @@ class Http {
       };
     }
 
+    if (!isPublic) headers.token = window.storage.get('access_token');
+
     const response = await fetch(url, { ...opts, headers });
     if (response.status === 401) setTimeout(() => this.unauthorized && this.unauthorized());
     if (!response.ok) {
@@ -57,23 +62,23 @@ class Http {
     }
   }
 
-  get(url: string, opts?: { responseType?: string }): Promise<any> {
+  get(url: string, opts?: { isPublic?: boolean; responseType?: string }): Promise<any> {
     return this.request(url, { ...opts, method: 'GET' });
   }
 
-  post(url: string, opts?: { responseType?: string; data?: any }): Promise<any> {
+  post(url: string, opts?: { isPublic?: boolean; responseType?: string; data?: any }): Promise<any> {
     return this.request(url, { ...opts, method: 'POST' });
   }
 
-  put(url: string, opts?: { responseType?: string; data?: any }): Promise<any> {
+  put(url: string, opts?: { isPublic?: boolean; responseType?: string; data?: any }): Promise<any> {
     return this.request(url, { ...opts, method: 'PUT' });
   }
 
-  del(url: string, opts?: { responseType?: string }): Promise<any> {
+  del(url: string, opts?: { isPublic?: boolean; responseType?: string }): Promise<any> {
     return this.request(url, { ...opts, method: 'DELETE' });
   }
 }
 
 export const api = new Http({
-  baseUrl: 'https://develop.pluryn.api.ledgerleopard.com',
+  baseUrl: 'https://lochem.be-better.api.ledgerleopard.com',
 });

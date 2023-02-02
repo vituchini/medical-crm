@@ -1,44 +1,44 @@
+import React from 'react';
+import { Route, Routes } from 'react-router-dom';
+
+import Examples from './Examples/Examples';
+
+import { PATHS } from './common/constants/routes';
+import { LocalStorage, SessionStorage } from './utils/storage';
+
 import './App.css';
 
-import { Breadcrumbs, CircularLoader, Popup, RadioButton, Tabs } from './common/components';
-import React, { useState } from 'react';
-
-const radioItems = [
-  {
-    value: 'on',
-    label: 'On',
-  },
-  {
-    value: 'off',
-    label: 'Off',
-  },
-];
-
-const tabs = [
-  { id: '0', content: <>Tab</> },
-  { id: '1', content: <>Tab</> },
-  { id: '2', content: <>Tab</> },
-  { id: '3', content: <>Tab</> },
-];
+// import { api } from "./api/api";
 
 function App() {
-  const [radio, setRadio] = useState({
-    value: 'on',
-    label: 'On',
-  });
-  const [visible, setVisible] = useState(false);
-  const [currentTab, setCurrentTab] = useState(tabs[0].id);
+  const sessionToken = SessionStorage.get('access_token');
+  const localToken = LocalStorage.get('access_token');
+
+  window.token = sessionToken || localToken;
+  window.storage = localToken ? LocalStorage : SessionStorage;
+
+  // const testReq = () => {
+  //   api.post('/signin', { data: { email: "test-hpadmini@gmail.com", password: "Ledger@1234" } }).then(x => {
+  //     console.log(x);
+  //
+  //     window.storage.set('access_token', x.user.token);
+  //   })
+  // }
+  //
+  // const testReq1 = () => {
+  //   api.get('/login/user').then(x => {
+  //     console.log(x);
+  //   })
+  // }
+
   return (
     <div className="App">
-      Component examples
-      <Breadcrumbs breadcrumbs={[{ title: 'title' }, { title: 'subtitle' }, { title: 'subsubtitle' }]} />
-      <RadioButton name="radio" value={radio} options={radioItems} onChange={setRadio} column />
-      <CircularLoader />
-      <button onClick={() => setVisible(true)}>show popup</button>
-      <Popup visible={visible} onClose={() => setVisible(false)}>
-        <h1>test</h1>
-      </Popup>
-      <Tabs list={tabs} current={currentTab} onChange={(tab) => setCurrentTab(tab)} />
+      {/*<button onClick={testReq}>button</button>*/}
+      {/*<button onClick={testReq1}>button</button>*/}
+
+      <Routes>
+        <Route path={PATHS.EXAMPLES} element={<Examples />} />
+      </Routes>
     </div>
   );
 }

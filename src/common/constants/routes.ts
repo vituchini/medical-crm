@@ -1,1 +1,3 @@
-export const PATHS = {};
+export const PATHS = {
+  EXAMPLES: '/examples',
+};
