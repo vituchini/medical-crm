@@ -1,0 +1,14 @@
+.container {
+  flex: 1;
+  background: var(--white);
+  box-shadow: var(--light-gray) 0px 1px 4px;
+  text-align: left;
+}
+
+.header {
+  padding: 16px;
+  border-bottom: 1px solid var(--light-gray);
+}
+.body {
+  padding: 0 16px;
+}

@@ -1,38 +1,16 @@
-import './Card.css';
-
-import { colors } from '../../constants/theme';
+import { ReactNode } from 'react';
+import styles from './Card.module.css';
 
 type CardProps = {
-  title?: string;
-  children?: React.ReactNode[];
-  count?: number;
-  type?: 'primary' | 'secondary' | 'success' | 'danger' | 'warning';
+  header?: ReactNode | ReactNode[];
+  children?: ReactNode | ReactNode[];
 };
 
-const Card: React.FC<CardProps> = ({ title, count, type = 'primary', children }) => {
+const Card = ({ header, children }: CardProps) => {
   return (
-    <div className="container">
-      {title && (
-        <>
-          <div className="header">
-            <p className="title">{title}</p>
-            {count && (
-              <p className="count" style={{ background: colors[type] }}>
-                {count}
-              </p>
-            )}
-          </div>
-          <div className="divider" />
-        </>
-      )}
-      {children?.map((child, index) => (
-        <>
-          <div className="child" key={index}>
-            {child}
-          </div>
-          {index !== children.length - 1 && <div className="divider divider-margin"></div>}
-        </>
-      ))}
+    <div className={styles.container}>
+      {header && <div className={styles.header}>{header}</div>}
+      <div className={styles.body}>{children}</div>
     </div>
   );
 };
