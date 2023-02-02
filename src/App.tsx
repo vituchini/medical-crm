@@ -1,6 +1,6 @@
 import './App.css';
 
-import { Breadcrumbs, Card, CircularLoader, Popup, RadioButton } from './common/components';
+import { Breadcrumbs, CircularLoader, Popup, RadioButton, Tabs } from './common/components';
 import React, { useState } from 'react';
 
 const radioItems = [
@@ -14,16 +14,23 @@ const radioItems = [
   },
 ];
 
+const tabs = [
+  { id: '0', content: <>Tab</> },
+  { id: '1', content: <>Tab</> },
+  { id: '2', content: <>Tab</> },
+  { id: '3', content: <>Tab</> },
+];
+
 function App() {
   const [radio, setRadio] = useState({
     value: 'on',
     label: 'On',
   });
   const [visible, setVisible] = useState(false);
+  const [currentTab, setCurrentTab] = useState(tabs[0].id);
   return (
     <div className="App">
       Component examples
-      {/* Card examples */}
       <Breadcrumbs breadcrumbs={[{ title: 'title' }, { title: 'subtitle' }, { title: 'subsubtitle' }]} />
       <RadioButton name="radio" value={radio} options={radioItems} onChange={setRadio} column />
       <CircularLoader />
@@ -31,14 +38,7 @@ function App() {
       <Popup visible={visible} onClose={() => setVisible(false)}>
         <h1>test</h1>
       </Popup>
-      <div style={{ display: 'flex', gap: '16px', margin: '16px 0' }}>
-        <Card header="Title">
-          <p>First paragraph</p>
-          <p>Second</p>
-        </Card>
-        <Card header="Title" />
-        <Card />
-      </div>
+      <Tabs list={tabs} current={currentTab} onChange={(tab) => setCurrentTab(tab)} />
     </div>
   );
 }

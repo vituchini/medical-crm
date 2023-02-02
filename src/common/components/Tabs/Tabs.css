@@ -1,0 +1,33 @@
+.tab-wrapper {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  background: var(--white);
+  height: 32px;
+  border: 1px solid var(--default);
+  border-radius: 4px 4px 0px 0px;
+}
+
+.tab-wrapper .tab-item {
+  padding: 6px 12px;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 20px;
+  color: var(--primary);
+  cursor: pointer;
+  opacity: 1;
+}
+
+.tab-wrapper .tab-item:hover {
+  opacity: 0.9;
+  transition: opacity 0.3s ease 0s;
+}
+
+.tab-wrapper .tab-item.active {
+  background: var(--primary);
+  color: var(--white);
+  border-radius: 4px 4px 0px 0px;
+}
