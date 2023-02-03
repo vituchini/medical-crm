@@ -44,150 +44,151 @@ import { ReactComponent as Users } from './assets/users.svg';
 import { ReactComponent as UsersOutlined } from './assets/users-outlined.svg';
 import styles from './Icon.module.css';
 
-type IconType =
-  | 'user'
-  | 'userAdd'
-  | 'userArrow'
-  | 'userArrowOutlined'
-  | 'userBlock'
-  | 'users'
-  | 'usersOutlined'
-  | 'userFile'
-  | 'userCase'
-  | 'userBadge'
-  | 'arrowDown'
-  | 'arrowRight'
-  | 'close'
-  | 'rejected'
-  | 'hamburger'
-  | 'approved'
-  | 'list'
-  | 'listApproved'
-  | 'add'
-  | 'active'
-  | 'edit'
-  | 'notification'
-  | 'search'
-  | 'heart'
-  | 'lock'
-  | 'traffic'
-  | 'date'
-  | 'send'
-  | 'upload'
-  | 'trash'
-  | 'file'
-  | 'fileDone'
-  | 'fileNew'
-  | 'fileCancel'
-  | 'fileAdd'
-  | 'building'
-  | 'hospital'
-  | 'location'
-  | 'link'
-  | 'package'
-  | 'euro'
-  | 'percent'
-  | 'error'
-  | 'import';
+export enum IconTypes {
+  user = 'user',
+  userAdd = 'userAdd',
+  userArrow = 'userArrow',
+  userArrowOutlined = 'userArrowOutlined',
+  userBlock = 'userBlock',
+  users = 'users',
+  usersOutlined = 'usersOutlined',
+  userCase = 'userCase',
+  userFile = 'userFile',
+  userBadge = 'userBadge',
+  arrowDown = 'arrowDown',
+  arrowRight = 'arrowRight',
+  close = 'close',
+  rejected = 'rejected',
+  hamburger = 'hamburger',
+  approved = 'approved',
+  list = 'list',
+  listApproved = 'listApproved',
+  add = 'add',
+  active = 'active',
+  edit = 'edit',
+  notification = 'notification',
+  search = 'search',
+  heart = 'heart',
+  lock = 'lock',
+  traffic = 'traffic',
+  date = 'date',
+  send = 'send',
+  upload = 'upload',
+  trash = 'trash',
+  file = 'file',
+  fileDone = 'fileDone',
+  fileNew = 'fileNew',
+  fileCancel = 'fileCancel',
+  fileAdd = 'fileAdd',
+  building = 'building',
+  hospital = 'hospital',
+  location = 'location',
+  link = 'link',
+  package = 'package',
+  euro = 'euro',
+  percent = 'percent',
+  error = 'error',
+  import = 'import',
+}
 
 type IconColor = 'white' | 'default' | 'primary' | 'secondary' | 'warning' | 'danger' | 'success' | 'light-gray';
 
 type IconProps = {
-  type?: IconType;
+  type?: IconTypes;
   iconColor?: IconColor;
   size?: number;
   alignItems?: string;
 };
 
-const iconByType = (type?: IconType) => {
+const iconByType = (type?: IconTypes) => {
   switch (type) {
-    case 'user':
+    case IconTypes.user:
       return <User />;
-    case 'userAdd':
+    case IconTypes.userAdd:
       return <UserAdd />;
-    case 'userArrow':
+    case IconTypes.userArrow:
       return <UserArrow />;
-    case 'userArrowOutlined':
+    case IconTypes.userArrowOutlined:
       return <UserArrowOutlined />;
-    case 'userBlock':
+    case IconTypes.userBlock:
       return <UserBlock />;
-    case 'users':
+    case IconTypes.users:
       return <Users />;
-    case 'usersOutlined':
+    case IconTypes.usersOutlined:
       return <UsersOutlined />;
-    case 'userFile':
+    case IconTypes.userFile:
       return <UserFile />;
-    case 'userCase':
+    case IconTypes.userCase:
       return <UserCase />;
-    case 'userBadge':
+    case IconTypes.userBadge:
       return <UserBadge />;
-    case 'arrowDown':
+    case IconTypes.arrowDown:
       return <ArrowDown />;
-    case 'arrowRight':
+    case IconTypes.arrowRight:
       return <ArrowRight />;
-    case 'close':
+    case IconTypes.close:
       return <Close />;
-    case 'rejected':
+    case IconTypes.rejected:
       return <Rejected />;
-    case 'hamburger':
+    case IconTypes.hamburger:
       return <Hamburger />;
-    case 'approved':
+    case IconTypes.approved:
       return <Approved />;
-    case 'list':
+    case IconTypes.list:
       return <List />;
-    case 'listApproved':
+    case IconTypes.listApproved:
       return <ListApproved />;
-    case 'add':
+    case IconTypes.add:
       return <Add />;
-    case 'active':
+    case IconTypes.active:
       return <Active />;
-    case 'edit':
+    case IconTypes.edit:
       return <Edit />;
-    case 'notification':
+    case IconTypes.notification:
       return <Notification />;
-    case 'search':
+    case IconTypes.search:
       return <Search />;
-    case 'heart':
+    case IconTypes.heart:
       return <Heart />;
-    case 'lock':
+    case IconTypes.lock:
       return <Lock />;
-    case 'traffic':
+    case IconTypes.traffic:
       return <Traffic />;
-    case 'date':
+    case IconTypes.date:
       return <Date />;
-    case 'send':
+    case IconTypes.send:
       return <Send />;
-    case 'upload':
+    case IconTypes.upload:
       return <Upload />;
-    case 'trash':
+    case IconTypes.trash:
       return <Trash />;
-    case 'file':
+    case IconTypes.file:
       return <File />;
-    case 'fileDone':
+    case IconTypes.fileDone:
       return <FileDone />;
-    case 'fileNew':
+    case IconTypes.fileNew:
       return <FileNew />;
-    case 'fileCancel':
+    case IconTypes.fileCancel:
       return <FileCancel />;
-    case 'fileAdd':
+    case IconTypes.fileAdd:
       return <FileAdd />;
-    case 'building':
+    case IconTypes.building:
       return <Building />;
-    case 'hospital':
+    case IconTypes.hospital:
       return <Hospital />;
-    case 'location':
+    case IconTypes.location:
       return <Location />;
-    case 'link':
+    case IconTypes.link:
       return <Link />;
-    case 'package':
+    case IconTypes.package:
       return <Package />;
-    case 'euro':
+    case IconTypes.euro:
       return <Euro />;
-    case 'percent':
+    case IconTypes.percent:
       return <Percent />;
-    case 'error':
+    case IconTypes.error:
       return <Error />;
-    case 'import':
+    case IconTypes.import:
       return <Import />;
     default:
       return <Close />;
