@@ -1,26 +1,26 @@
-import './Tabs.css';
+import React, { MouseEvent, ReactNode } from 'react';
 
-import React, { FunctionComponent, ReactNode } from 'react';
+import style from './Tabs.module.css';
 
 type listType = {
-  id: string;
+  _id: string;
   content: ReactNode | ReactNode[];
 };
 
 type TabsProps = {
   list: listType[];
   current: string;
-  onChange: (id: string) => void;
+  onChange: (_id: string, ev: MouseEvent<HTMLLIElement>) => void;
 };
 
-const Tabs: FunctionComponent<TabsProps> = (props) => {
+const Tabs = (props: TabsProps) => {
   return (
-    <ul className="tab-wrapper">
-      {props.list.map((element) => (
+    <ul className={style.tabWrapper}>
+      {props.list.map((element, index) => (
         <li
-          className={'tab-item ' + (props.current === element.id ? 'active' : '')}
-          key={element.id}
-          onClick={() => props.onChange(element.id)}
+          className={`${style.tabItem} ${props.current === element._id ? style.active : ''}`}
+          key={'tab-' + index}
+          onClick={(ev) => props.onChange(element._id, ev)}
         >
           {element.content}
         </li>
