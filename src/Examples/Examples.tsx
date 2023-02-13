@@ -1,7 +1,6 @@
-import { Breadcrumbs, Card, CircularLoader, Icon, Popup, RadioButton } from '../common/components';
+import { Breadcrumbs, Card, Checkbox, CircularLoader, Popup, RadioButton, Tabs } from '../common/components';
 import React, { useState } from 'react';
 
-import { IconTypes } from '../common/components/Icon/Icon';
 import style from './style.module.css';
 
 const Examples = () => {
@@ -11,6 +10,20 @@ const Examples = () => {
     value: 'on',
     label: 'On',
   });
+
+  const [checkbox1, setCheckbox1] = useState(false);
+  const [checkbox2, setCheckbox2] = useState(false);
+  const [checkbox3, setCheckbox3] = useState(false);
+  const [checkbox4, setCheckbox4] = useState(false);
+  const [checkbox5, setCheckbox5] = useState(false);
+
+  const tabs = [
+    { _id: '0', content: <>Tab</> },
+    { _id: '1', content: <>Tab</> },
+    { _id: '2', content: <>Tab</> },
+    { _id: '3', content: <>Tab</> },
+  ];
+  const [currentTab, setCurrentTab] = useState(tabs[0]._id);
 
   const radioItems = [
     {
@@ -44,14 +57,39 @@ const Examples = () => {
           <p>First paragraph</p>
           <p>Second</p>
         </Card>
-        <Card />
         <Card header="Title" />
+        <Card />
       </div>
-      <div style={{ display: 'flex', gap: '4px', flexWrap: 'wrap' }}>
-        {(Object.keys(IconTypes) as Array<keyof typeof IconTypes>).map((type) => (
-          <Icon type={IconTypes[type]} iconColor="primary" size={24} />
-        ))}
+
+      <div>
+        <Checkbox checked={checkbox1} name="1" onChange={() => setCheckbox1(!checkbox1)} />
       </div>
+      <div>
+        <Checkbox rightText="right text" name="2" checked={checkbox2} onChange={() => setCheckbox2(!checkbox2)} />
+      </div>
+      <div>
+        <Checkbox leftText="left text" name="3" checked={checkbox3} onChange={() => setCheckbox3(!checkbox3)} />
+      </div>
+      <div>
+        <Checkbox
+          rightText="error checkbox"
+          error={true}
+          name="4"
+          checked={checkbox4}
+          onChange={() => setCheckbox4(!checkbox4)}
+        />
+      </div>
+      <div>
+        <Checkbox
+          rightText="disabled checkbox"
+          disabled={true}
+          name="5"
+          checked={checkbox5}
+          onChange={() => setCheckbox5(!checkbox5)}
+        />
+      </div>
+
+      <Tabs list={tabs} current={currentTab} onChange={(tab) => setCurrentTab(tab)} />
     </div>
   );
 };
