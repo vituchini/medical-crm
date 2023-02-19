@@ -1,0 +1,7 @@
+.subLabel {
+  color: var(--gray);
+}
+
+.subLabel.error {
+  color: var(--danger);
+}

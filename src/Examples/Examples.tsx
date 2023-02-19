@@ -7,6 +7,7 @@ import {
   Icon,
   Popup,
   RadioButton,
+  Select,
   Tabs,
 } from '../common/components';
 import React, { useState } from 'react';
@@ -46,6 +47,11 @@ const Examples = () => {
       label: 'Off',
     },
   ];
+
+  const onChangeSelect = (value: any, action: any) => {
+    console.log(value, action);
+    // alert(`you've selected: ${value.value}`);
+  };
 
   return (
     <div className={style.container}>
@@ -126,6 +132,105 @@ const Examples = () => {
         <Button size="fullWidth" color="primary">
           Button with full parent width
         </Button>
+      </div>
+      <div className={style.flex}>
+        <div>
+          <Select
+            subLabel="default select"
+            onChange={onChangeSelect}
+            options={[
+              { value: 'chocolate', label: 'Chocolate' },
+              { value: 'strawberry', label: 'Strawberry' },
+              { value: 'vanilla', label: 'Vanilla' },
+            ]}
+            placeholder="Dropdown"
+          />
+        </div>
+        <br />
+        <div>
+          <Select
+            subLabel="searchable select"
+            onChange={onChangeSelect}
+            isSearchable
+            options={[
+              { value: 'chocolate', label: 'Chocolate' },
+              { value: 'strawberry', label: 'Strawberry' },
+              { value: 'vanilla', label: 'Vanilla' },
+            ]}
+            placeholder="Dropdown"
+          />
+        </div>
+        <br />
+        <div>
+          <Select
+            subLabel="disabled select"
+            onChange={onChangeSelect}
+            isDisabled
+            options={[
+              { value: 'chocolate', label: 'Chocolate' },
+              { value: 'strawberry', label: 'Strawberry' },
+              { value: 'vanilla', label: 'Vanilla' },
+            ]}
+            placeholder="Dropdown"
+          />
+        </div>
+        <br />
+        <div>
+          <Select
+            subLabel="selected value by default"
+            onChange={onChangeSelect}
+            value={{ value: 'strawberry', label: 'Strawberry' }}
+            options={[
+              { value: 'chocolate', label: 'Chocolate' },
+              { value: 'strawberry', label: 'Strawberry' },
+              { value: 'vanilla', label: 'Vanilla' },
+            ]}
+            placeholder="Dropdown"
+          />
+        </div>
+        <br />
+        <div>
+          <Select
+            subLabel="multi select"
+            onChange={onChangeSelect}
+            options={[
+              { value: 'chocolate', label: 'Chocolate' },
+              { value: 'strawberry', label: 'Strawberry' },
+              { value: 'vanilla', label: 'Vanilla' },
+            ]}
+            placeholder="Dropdown"
+            isMulti
+            closeMenuOnSelect={false}
+          />
+        </div>
+        <br />
+        <div>
+          <Select
+            subLabel="error select"
+            onChange={onChangeSelect}
+            options={[
+              { value: 'chocolate', label: 'Chocolate' },
+              { value: 'strawberry', label: 'Strawberry' },
+              { value: 'vanilla', label: 'Vanilla' },
+            ]}
+            placeholder="Dropdown"
+            isError
+            closeMenuOnSelect={false}
+          />
+        </div>
+      </div>
+      <div>
+        <Select
+          subLabel="full width select"
+          onChange={onChangeSelect}
+          options={[
+            { value: 'chocolate', label: 'Chocolate' },
+            { value: 'strawberry', label: 'Strawberry' },
+            { value: 'vanilla', label: 'Vanilla' },
+          ]}
+          isFullWidth
+          placeholder="Dropdown"
+        />
       </div>
     </div>
   );
