@@ -1,103 +1,84 @@
-import React, { ComponentProps } from 'react';
+import React, { ComponentProps, ReactElement } from 'react';
 
 import SelectAbstraction from 'react-select';
 import style from './Select.module.css';
 
-type alignText = 'left' | 'center' | 'right';
-type SelectProps = {
+type SelectProps<T> = {
   isSearchable?: boolean;
   isFullWidth?: boolean;
-  isError?: boolean;
-  alignText?: alignText;
+  error?: boolean;
   subLabel?: string;
-  onChange?: (valueItem: any, actionItem: any) => void;
+  disabled?: boolean;
+  alignText?: 'left' | 'center' | 'right';
+  onChange?: (value: T | T[], actionItem: any) => void;
 } & ComponentProps<SelectAbstraction>;
 
-const alignElement = (props: SelectProps) => {
-  switch (props.alignText) {
-    case 'left':
-      return { textAlign: 'left' };
-    case 'center':
-      return { textAlign: 'center' };
-    case 'right':
-      return { textAlign: 'right' };
-    default:
-      return { textAlign: 'left' };
-  }
-};
+const Select = <T,>({
+  isSearchable = false,
+  disabled = false,
+  alignText = 'left',
+  ...props
+}: SelectProps<T>): ReactElement => {
+  const widthElement = () => {
+    if (props.isFullWidth) return { width: '100%' };
+    return { width: '200px' };
+  };
 
-const widthElement = (props: SelectProps) => {
-  switch (props.isFullWidth) {
-    case true:
-      return { width: '100%' };
-    case false:
-      return { width: '200px' };
-    default:
-      return { width: '200px' };
-  }
-};
-
-const errorElement = (props: SelectProps) => {
-  switch (props.isError) {
-    case true:
+  const errorElement = () => {
+    if (props.error)
       return {
         border: '1px solid var(--danger)',
         '&:hover': {
           border: '1px solid var(--danger)',
         },
       };
-    case false:
-      return {};
-    default:
-      return {};
-  }
-};
+    return {};
+  };
 
-const Select = ({ isSearchable = false, ...props }: SelectProps) => {
+  const getStyles = () => ({
+    menu: (provided: any, state: any) => ({
+      ...provided,
+      ...widthElement(),
+      textAlign: alignText,
+    }),
+    control: (base: any, state: any) => ({
+      ...base,
+      border: state.isFocused ? 0 : 0,
+      boxShadow: state.isFocused ? 0 : 0,
+      pointerEvents: state.isDisabled ? 'auto' : '',
+      cursor: state.isDisabled ? 'not-allowed' : 'default',
+      '&:hover': {
+        border: state.isFocused ? 0 : 0,
+      },
+      ...widthElement(),
+      textAlign: alignText,
+      ...errorElement(),
+    }),
+    option: (provided: any, state: any) => ({
+      ...provided,
+      '&:hover': {
+        background: 'var(--light-gray)',
+      },
+      background: state.isSelected ? 'var(--light-gray)' : 'var(--white)',
+      color: 'var(--black)',
+      ...widthElement(),
+      textAlign: alignText,
+    }),
+  });
+
   return (
-    <label>
+    <>
       {props.subLabel && (
-        <span className={`${style.subLabel} ${props.isError ? style.error : ''}`}>{props.subLabel}</span>
+        <label className={`${style.subLabel} ${props.error ? style.error : ''}`}>{props.subLabel}</label>
       )}
       <SelectAbstraction
         {...props}
+        isDisabled={disabled}
         isSearchable={isSearchable}
         onChange={props.onChange}
-        styles={{
-          menu: (provided: any, state: any) => ({
-            ...provided,
-            ...widthElement(props),
-            ...alignElement(props),
-          }),
-          control: (base: any, state: any) => ({
-            ...base,
-            border: state.isFocused ? 0 : 0,
-            boxShadow: state.isFocused ? 0 : 0,
-            pointerEvents: state.isDisabled ? 'auto' : '',
-            cursor: state.isDisabled ? 'not-allowed' : 'default',
-            '&:hover': {
-              border: state.isFocused ? 0 : 0,
-            },
-            ...widthElement(props),
-            ...alignElement(props),
-            ...errorElement(props),
-          }),
-          option: (provided: any, state: any) => ({
-            ...provided,
-            '&:hover': {
-              background: 'var(--light-gray)',
-            },
-            background: state.isSelected ? 'var(--light-gray)' : 'var(--white)',
-            color: 'var(--black)',
-            ...widthElement(props),
-            ...alignElement(props),
-          }),
-          singleValue: (provided: any, state: any) => ({
-            ...provided,
-          }),
-        }}
+        styles={getStyles()}
       />
-    </label>
+    </>
   );
 };
 
