@@ -21,7 +21,9 @@ const Button = ({ children, color = 'primary', size = 'medium', type = 'fill', o
   const buttonColor = `${color}-${type}`;
   return (
     <button
-      className={`${styles.button} ${styles[buttonColor]} ${styles[size]} ${disabled ? styles.disabled : ''}`}
+      className={`${styles.button} ${styles[buttonColor]} ${styles[size]} ${
+        disabled ? styles[`disabled-${type}`] : ''
+      }`}
       onClick={onClick}
       disabled={disabled}
     >
