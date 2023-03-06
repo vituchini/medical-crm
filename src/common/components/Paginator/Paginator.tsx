@@ -1,5 +1,6 @@
 import Button from '../Button/Button';
 import styles from './Paginator.module.css';
+import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
 type PaginationProps = {
@@ -19,6 +20,8 @@ const Paginator = ({ skip, total, pageSize = 10, onPageChange }: PaginationProps
 
   const goNext = () => currentPage !== totalPages - 1 && onPageChange(skip + pageSize);
   const goPrevious = () => currentPage && onPageChange(skip - pageSize);
+
+  useEffect(() => onPageChange(0), [pageSize]);
 
   return (
     <ul className={styles.container}>

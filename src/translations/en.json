@@ -6,7 +6,5 @@
   "errors.500": "Functionality temporarily unavailable",
   "errors.503": "Functionality temporarily unavailable",
   "errors.504": "Functionality temporarily unavailable",
-  "errors.BAD_PARSING": "Server response parsing error",
-  "Previous": "Previous",
-  "Next": "Next"
+  "errors.BAD_PARSING": "Server response parsing error"
 }
