@@ -8,6 +8,7 @@ type SelectProps<T> = {
   isFullWidth?: boolean;
   error?: boolean;
   disabled?: boolean;
+  value?: T;
   subLabel?: string;
   alignText?: 'left' | 'center' | 'right';
   onChange?: (value: T | T[], actionItem: any) => void;
@@ -68,6 +69,7 @@ const Select = <T,>({
       )}
       <SelectAbstraction
         {...props}
+        value={props.value}
         isDisabled={disabled}
         isSearchable={isSearchable}
         onChange={props.onChange}
