@@ -7,8 +7,8 @@ type SelectProps<T> = {
   isSearchable?: boolean;
   isFullWidth?: boolean;
   error?: boolean;
-  subLabel?: string;
   disabled?: boolean;
+  subLabel?: string;
   alignText?: 'left' | 'center' | 'right';
   onChange?: (value: T | T[], actionItem: any) => void;
 } & ComponentProps<SelectAbstraction>;
@@ -19,21 +19,16 @@ const Select = <T,>({
   alignText = 'left',
   ...props
 }: SelectProps<T>): ReactElement => {
-  const widthElement = () => {
-    if (props.isFullWidth) return { width: '100%' };
-    return { width: '200px' };
-  };
-
-  const errorElement = () => {
-    if (props.error)
-      return {
-        border: '1px solid var(--danger)',
-        '&:hover': {
+  const widthElement = () => ({ width: props.isFullWidth ? '100%' : '200px' });
+  const errorElement = () =>
+    props.error
+      ? {
           border: '1px solid var(--danger)',
-        },
-      };
-    return {};
-  };
+          '&:hover': {
+            border: '1px solid var(--danger)',
+          },
+        }
+      : {};
 
   const getStyles = () => ({
     menu: (provided: any, state: any) => ({
@@ -43,12 +38,12 @@ const Select = <T,>({
     }),
     control: (base: any, state: any) => ({
       ...base,
-      border: state.isFocused ? 0 : 0,
-      boxShadow: state.isFocused ? 0 : 0,
+      border: 0,
+      boxShadow: 0,
       pointerEvents: state.isDisabled ? 'auto' : '',
       cursor: state.isDisabled ? 'not-allowed' : 'default',
       '&:hover': {
-        border: state.isFocused ? 0 : 0,
+        border: 0,
       },
       ...widthElement(),
       textAlign: alignText,
