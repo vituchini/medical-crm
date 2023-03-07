@@ -1,16 +1,19 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 
+import { PATHS } from './common/constants/routes';
+import { User } from './models';
 import { api } from './api/api';
 import { useNavigate } from 'react-router-dom';
 import { useToasts } from 'react-toast-notifications';
 import { useTranslation } from 'react-i18next';
 
-const { Provider } = React.createContext('current');
+const Context = React.createContext<any>(null);
 
-const ContextProvider = ({ children }: any) => {
+export const ContextProvider = ({ children }: any) => {
   const navigate = useNavigate();
   const { t } = useTranslation();
   const { addToast } = useToasts();
+  const [currentUser, setCurrentUser] = useState<User | null>(null);
 
   useEffect(() => {
     api.errorMessage = (error: any) => {
@@ -19,10 +22,10 @@ const ContextProvider = ({ children }: any) => {
       if (message !== messageKey) addToast(message, { appearance: 'error' });
       console.error(error);
     };
-    api.unauthorized = () => navigate('/login', { replace: true });
+    api.unauthorized = () => navigate(PATHS.LOGOUT, { replace: true });
   }, []);
 
-  return <Provider value={'current'}>{children}</Provider>;
+  return <Context.Provider value={{ currentUser, setCurrentUser }}>{children}</Context.Provider>;
 };
 
-export default ContextProvider;
+export const useUserContext = () => useContext<{ currentUser: User; setCurrentUser: any }>(Context);

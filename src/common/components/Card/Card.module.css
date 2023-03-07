@@ -1,7 +1,7 @@
 .container {
   flex: 1;
   background: var(--white);
-  box-shadow: var(--light-gray) 0px 1px 4px;
+  box-shadow: var(--light-gray) 0 1px 4px;
   text-align: left;
 }
 

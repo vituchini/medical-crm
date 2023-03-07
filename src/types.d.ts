@@ -4,7 +4,7 @@ export {};
 
 declare global {
   interface Window {
-    token: string;
+    token: string | null | undefined;
     storage: Storage;
   }
 }

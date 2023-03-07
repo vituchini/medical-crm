@@ -1,38 +1,38 @@
 import './App.css';
 
-import { Breadcrumbs, CircularLoader, Icon, Popup, RadioButton } from './common/components';
-import React, { useState } from 'react';
+import { LocalStorage, SessionStorage } from './utils/storage';
+import { Navigate, Route, Routes } from 'react-router-dom';
 
-const radioItems = [
-  {
-    value: 'on',
-    label: 'On',
-  },
-  {
-    value: 'off',
-    label: 'Off',
-  },
-];
+import Dashboard from './Dashboard/Dashboard';
+import Examples from './Examples/Examples';
+import { Login } from './Auth';
+import Logout from './Logout/Logout';
+import { PATHS } from './common/constants/routes';
+import PrivateRouter from './PrivateRouter';
+import React from 'react';
 
 function App() {
-  const [radio, setRadio] = useState({
-    value: 'on',
-    label: 'On',
-  });
-  const [visible, setVisible] = useState(false);
+  const sessionToken = SessionStorage.get('access_token');
+  const localToken = LocalStorage.get('access_token');
+
+  window.token = sessionToken || localToken;
+  window.storage = localToken ? LocalStorage : SessionStorage;
+
   return (
     <div className="App">
-      Component examples
-      <Breadcrumbs breadcrumbs={[{ title: 'title' }, { title: 'subtitle' }, { title: 'subsubtitle' }]} />
-      <RadioButton name="radio" value={radio} options={radioItems} onChange={setRadio} column />
-      <CircularLoader />
-      <button onClick={() => setVisible(true)}>show popup</button>
-      <Popup visible={visible} onClose={() => setVisible(false)}>
-        <h1>test</h1>
-      </Popup>
-      <div>
-        <Icon type="user" iconColor="primary" size={32} />
-      </div>
+      <Routes>
+        <Route path={PATHS.AUTH.LOGIN} element={<Login />} />
+        <Route path={PATHS.EXAMPLES} element={<Examples />} />
+
+        <Route path="/" element={<PrivateRouter />}>
+          <Route path={PATHS.DASHBOARD.ROOT} element={<Dashboard />} />
+          <Route path={PATHS.DASHBOARD.EDIT} element={<Dashboard />} />
+        </Route>
+
+        <Route path={PATHS.LOGOUT} element={<Logout />} />
+
+        <Route path="*" element={<Navigate to={PATHS.AUTH.LOGIN} />} />
+      </Routes>
     </div>
   );
 }

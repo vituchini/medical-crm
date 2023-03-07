@@ -8,7 +8,7 @@
   background: var(--white);
   height: 32px;
   border: 1px solid var(--light-gray);
-  border-radius: 4px 4px 0px 0px;
+  border-radius: 4px 4px 0 0;
 }
 
 .tab-wrapper .tab-item {
@@ -29,5 +29,5 @@
 .tab-wrapper .tab-item.active {
   background: var(--primary);
   color: var(--white);
-  border-radius: 4px 4px 0px 0px;
+  border-radius: 4px 4px 0 0;
 }

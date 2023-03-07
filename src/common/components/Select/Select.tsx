@@ -21,6 +21,7 @@ const Select = <T,>({
   ...props
 }: SelectProps<T>): ReactElement => {
   const widthElement = () => ({ width: props.isFullWidth ? '100%' : '200px' });
+
   const errorElement = () =>
     props.error
       ? {
@@ -32,7 +33,7 @@ const Select = <T,>({
       : {};
 
   const getStyles = () => ({
-    menu: (provided: any, state: any) => ({
+    menu: (provided: any) => ({
       ...provided,
       ...widthElement(),
       textAlign: alignText,

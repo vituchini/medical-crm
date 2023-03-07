@@ -1,4 +1,5 @@
-import { ChangeEvent } from 'react';
+import React, { ChangeEvent } from 'react';
+
 import styles from './RadioButton.module.css';
 
 type RadioGroupOption = {

@@ -1,6 +1,5 @@
-import Icon, { IconTypes } from '../Icon/Icon';
+import React, { ReactNode } from 'react';
 
-import { ReactNode } from 'react';
 import styles from './Button.module.css';
 
 type ButtonColor = 'gray' | 'primary' | 'secondary' | 'warning' | 'danger' | 'success' | 'light-gray' | 'black';
@@ -19,6 +18,7 @@ export type ButtonProps = {
 
 const Button = ({ children, color = 'primary', size = 'medium', type = 'fill', onClick, disabled }: ButtonProps) => {
   const buttonColor = `${color}-${type}`;
+
   return (
     <button
       className={`${styles.button} ${styles[buttonColor]} ${styles[size]} ${

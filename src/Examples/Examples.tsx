@@ -3,11 +3,11 @@ import {
   Button,
   Card,
   Checkbox,
-  CircularLoader,
   Icon,
-  Paginator,
+  Loader,
   Popup,
   RadioButton,
+  Select,
   Tabs,
 } from '../common/components';
 import React, { useState } from 'react';
@@ -17,7 +17,6 @@ import style from './style.module.css';
 
 const Examples = () => {
   const [visible, setVisible] = useState(false);
-  const [skip, setSkip] = useState(0);
 
   const [radio, setRadio] = useState({
     value: 'on',
@@ -49,7 +48,10 @@ const Examples = () => {
     },
   ];
 
-  const onPageChange = (skip: number): void => setSkip(skip);
+  const onChangeSelect = (value: any, action: any) => {
+    console.log(value, action);
+    // alert(`you've selected: ${value.value}`);
+  };
 
   return (
     <div className={style.container}>
@@ -60,7 +62,7 @@ const Examples = () => {
       <RadioButton name="radio" value={radio} options={radioItems} onChange={setRadio} column />
 
       <div style={{ position: 'relative', height: 100, width: '100%' }}>
-        <CircularLoader />
+        <Loader />
       </div>
 
       <Button onClick={() => setVisible(true)}>Show popup</Button>
@@ -110,8 +112,8 @@ const Examples = () => {
       <Tabs list={tabs} current={currentTab} onChange={(tab) => setCurrentTab(tab)} />
 
       <div className={style.flex}>
-        {(Object.keys(IconTypes) as Array<keyof typeof IconTypes>).map((type) => (
-          <Icon type={IconTypes[type]} iconColor="primary" size={24} />
+        {(Object.keys(IconTypes) as Array<keyof typeof IconTypes>).map((type, index) => (
+          <Icon key={index} type={IconTypes[type]} iconColor="primary" size={24} />
         ))}
       </div>
 
@@ -131,7 +133,105 @@ const Examples = () => {
           Button with full parent width
         </Button>
       </div>
-      <Paginator skip={skip} total={150} onPageChange={onPageChange} />
+      <div className={style.flex}>
+        <div>
+          <Select
+            subLabel="default select"
+            onChange={onChangeSelect}
+            options={[
+              { value: 'chocolate', label: 'Chocolate' },
+              { value: 'strawberry', label: 'Strawberry' },
+              { value: 'vanilla', label: 'Vanilla' },
+            ]}
+            placeholder="Dropdown"
+          />
+        </div>
+        <br />
+        <div>
+          <Select
+            subLabel="searchable select"
+            onChange={onChangeSelect}
+            isSearchable
+            options={[
+              { value: 'chocolate', label: 'Chocolate' },
+              { value: 'strawberry', label: 'Strawberry' },
+              { value: 'vanilla', label: 'Vanilla' },
+            ]}
+            placeholder="Dropdown"
+          />
+        </div>
+        <br />
+        <div>
+          <Select
+            subLabel="disabled select"
+            onChange={onChangeSelect}
+            isDisabled
+            options={[
+              { value: 'chocolate', label: 'Chocolate' },
+              { value: 'strawberry', label: 'Strawberry' },
+              { value: 'vanilla', label: 'Vanilla' },
+            ]}
+            placeholder="Dropdown"
+          />
+        </div>
+        <br />
+        <div>
+          <Select
+            subLabel="selected value by default"
+            onChange={onChangeSelect}
+            value={{ value: 'strawberry', label: 'Strawberry' }}
+            options={[
+              { value: 'chocolate', label: 'Chocolate' },
+              { value: 'strawberry', label: 'Strawberry' },
+              { value: 'vanilla', label: 'Vanilla' },
+            ]}
+            placeholder="Dropdown"
+          />
+        </div>
+        <br />
+        <div>
+          <Select
+            subLabel="multi select"
+            onChange={onChangeSelect}
+            options={[
+              { value: 'chocolate', label: 'Chocolate' },
+              { value: 'strawberry', label: 'Strawberry' },
+              { value: 'vanilla', label: 'Vanilla' },
+            ]}
+            placeholder="Dropdown"
+            isMulti
+            closeMenuOnSelect={false}
+          />
+        </div>
+        <br />
+        <div>
+          <Select
+            subLabel="error select"
+            onChange={onChangeSelect}
+            options={[
+              { value: 'chocolate', label: 'Chocolate' },
+              { value: 'strawberry', label: 'Strawberry' },
+              { value: 'vanilla', label: 'Vanilla' },
+            ]}
+            placeholder="Dropdown"
+            error
+            closeMenuOnSelect={false}
+          />
+        </div>
+      </div>
+      <div>
+        <Select
+          subLabel="full width select"
+          onChange={onChangeSelect}
+          options={[
+            { value: 'chocolate', label: 'Chocolate' },
+            { value: 'strawberry', label: 'Strawberry' },
+            { value: 'vanilla', label: 'Vanilla' },
+          ]}
+          isFullWidth
+          placeholder="Dropdown"
+        />
+      </div>
     </div>
   );
 };
