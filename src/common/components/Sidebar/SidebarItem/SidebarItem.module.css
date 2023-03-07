@@ -1,0 +1,17 @@
+.sidebarItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.sidebarItem.active span,
+.sidebarItem.active .linkItem {
+  color: var(--secondary);
+}
+
+.sidebarItem .linkItem {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--gray);
+  text-decoration: none;
+}
