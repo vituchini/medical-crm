@@ -1,0 +1,6 @@
+.sidebarFooter {
+  list-style-type: none;
+  padding: 32px 16px;
+  display: flex;
+  flex-direction: column;
+}

@@ -1,17 +1,27 @@
-.sidebarItem {
+.sidebarBody {
+  list-style-type: none;
+  padding: 32px 16px;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.linkItem {
   display: flex;
   align-items: center;
   gap: 12px;
+  text-decoration: none;
 }
 
-.sidebarItem.active span,
-.sidebarItem.active .linkItem {
+.linkItem.active span,
+.linkItem.active .linkLabel {
   color: var(--secondary);
 }
 
-.sidebarItem .linkItem {
+.linkItem .linkLabel {
   font-size: 14px;
   font-weight: 400;
   color: var(--gray);
-  text-decoration: none;
 }

@@ -10,7 +10,9 @@ import {
   RadioButton,
   Select,
   Sidebar,
+  SidebarFooterWrapper,
   SidebarItem,
+  SidebarItemWrapper,
   Tabs,
 } from '../common/components';
 import React, { useState } from 'react';
@@ -71,13 +73,16 @@ const Examples = () => {
 
   return (
     <>
-      <Sidebar
-        isHidden={toggleSidebar}
-        content={items?.map((item) => (
-          <SidebarItem {...item} />
-        ))}
-        footer={<>this is a footer</>}
-      />
+      <Sidebar isHidden={toggleSidebar}>
+        <SidebarItemWrapper>
+          {items?.map((item, index) => (
+            <SidebarItem key={'item-' + index} {...item} />
+          ))}
+        </SidebarItemWrapper>
+        <SidebarFooterWrapper>
+          <span>this is the footer</span>
+        </SidebarFooterWrapper>
+      </Sidebar>
       <div className={style.container}>
         <div className={style.header}>Component examples</div>
 
