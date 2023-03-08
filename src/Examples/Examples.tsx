@@ -3,17 +3,18 @@ import {
   Button,
   Card,
   Checkbox,
+  Datepicker,
   Icon,
   Loader,
   Paginator,
   Popup,
-  ProfileLabel,
   RadioButton,
   Select,
   Tabs,
 } from '../common/components';
 import React, { useState } from 'react';
 
+import DatePickerAbstraction from 'react-datepicker';
 import { IconTypes } from '../common/components/Icon/Icon';
 import style from './style.module.css';
 
@@ -39,6 +40,10 @@ const Examples = () => {
     { _id: '3', content: <>Tab</> },
   ];
   const [currentTab, setCurrentTab] = useState(tabs[0]._id);
+
+  const [dateSelected, setDateSelected] = useState<Date | null>(new Date());
+  const [dateSelectedNull, setDateSelectedNull] = useState<Date | null>(null);
+  const [dateSelectedError, setDateSelectedError] = useState<Date | null>(null);
 
   const radioItems = [
     {
@@ -222,18 +227,41 @@ const Examples = () => {
           placeholder="Dropdown"
         />
       </div>
+
       <div className={style.flex}>
-        <ProfileLabel name="default" src="https://www.museumtv.art/wp-content/uploads/2021/09/image-2-475x600.jpeg" />
-        <ProfileLabel name="without img" src="" />
-        <ProfileLabel src="https://www.museumtv.art/wp-content/uploads/2021/09/image-2-475x600.jpeg" />
-        <ProfileLabel
-          name="primary right"
-          src="https://www.museumtv.art/wp-content/uploads/2021/09/image-2-475x600.jpeg"
-          textColor="primary"
-          textPosition="right"
+        <Datepicker
+          subLabel="selected date"
+          value={dateSelected}
+          onChange={(date: Date) => {
+            setDateSelected(date);
+          }}
         />
-        <ProfileLabel name="Big img bottom" textPosition="bottom" src="" imageSize={100} />
-        <ProfileLabel name="Big text top" textPosition="top" src="" fontSize={40} />
+        <Datepicker
+          subLabel="placeholder date"
+          value={dateSelectedNull}
+          placeholder="Choose a date"
+          onChange={(date: Date) => {
+            setDateSelectedNull(date);
+          }}
+        />
+        <Datepicker
+          subLabel="error date picker"
+          value={dateSelectedError}
+          placeholder="Choose a date"
+          error
+          onChange={(date: Date) => {
+            setDateSelectedError(date);
+          }}
+        />
+        <Datepicker
+          subLabel="disabled date picker"
+          value={dateSelectedNull}
+          placeholder="Choose a date"
+          disabled
+          onChange={(date: Date) => {
+            setDateSelectedError(date);
+          }}
+        />
       </div>
     </div>
   );

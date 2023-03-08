@@ -1,0 +1,24 @@
+.datepickerWrapper .datepicker {
+  border: 1px solid var(--default);
+  border-radius: 4px;
+  background: var(--white);
+  height: 30px;
+  width: 200px;
+  padding: 0 16px;
+  outline: 0;
+  font-size: 12px;
+}
+
+.datepickerWrapper .datepicker.error {
+  border: 1px solid var(--danger);
+}
+
+.datepickerWrapper .datepicker.disabled {
+  cursor: not-allowed;
+  background: var(--default);
+  border-color: var(--default);
+}
+
+.datepickerWrapper .subLabel {
+  color: var(--gray);
+}

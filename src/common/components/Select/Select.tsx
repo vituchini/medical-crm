@@ -44,6 +44,10 @@ const Select = <T,>({
       boxShadow: 0,
       pointerEvents: state.isDisabled ? 'auto' : '',
       cursor: state.isDisabled ? 'not-allowed' : 'default',
+      background: state.isDisabled ? 'var(--default)' : 'var(--white)',
+      height: '32px',
+      minHeight: '32px',
+      fontSize: '12px',
       '&:hover': {
         border: 0,
       },
@@ -57,14 +61,22 @@ const Select = <T,>({
         background: 'var(--light-gray)',
       },
       background: state.isSelected ? 'var(--light-gray)' : 'var(--white)',
+      paddingLeft: '16px',
+      paddingRight: '16px',
       color: 'var(--black)',
+      fontSize: '12px',
       ...widthElement(),
       textAlign: alignText,
+    }),
+    valueContainer: (base: any) => ({
+      ...base,
+      paddingLeft: '16px',
+      paddingRight: '16px',
     }),
   });
 
   return (
-    <>
+    <div className={style.selectWrapper}>
       {props.subLabel && (
         <label className={`${style.subLabel} ${props.error ? style.error : ''}`}>{props.subLabel}</label>
       )}
@@ -76,7 +88,7 @@ const Select = <T,>({
         onChange={props.onChange}
         styles={getStyles()}
       />
-    </>
+    </div>
   );
 };
 
