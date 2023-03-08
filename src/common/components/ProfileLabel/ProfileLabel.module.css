@@ -1,0 +1,59 @@
+.container {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  text-transform: capitalize;
+}
+
+.horizontal {
+  flex-direction: column;
+}
+
+.before {
+  order: 0;
+}
+
+.after {
+  order: 2;
+}
+
+.img {
+  border-radius: 50%;
+  order: 1;
+  box-shadow: var(--light-gray) 0px 2px 8px 0px;
+  height: 100%;
+  width: 100%;
+}
+
+.letter {
+  background: var(--white);
+  color: var(--primary);
+}
+.primary {
+  color: var(--primary);
+}
+
+.secondary {
+  color: var(--secondary);
+}
+
+.danger {
+  color: var(--danger);
+}
+
+.warning {
+  color: var(--warning);
+}
+
+.success {
+  color: var(--success);
+}
+
+.black {
+  color: var(--black);
+}
+
+.gray {
+  color: var(--gray);
+}
