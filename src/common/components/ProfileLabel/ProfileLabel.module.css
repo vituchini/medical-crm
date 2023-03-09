@@ -29,7 +29,7 @@
   cursor: default;
   border-radius: 50%;
   order: 1;
-  box-shadow: var(--light-gray) 0 2px 8px 0;
+  box-shadow: var(--transparent-black) 0 2px 8px 0;
   height: 100%;
   width: 100%;
 }
@@ -60,6 +60,10 @@
 
 .black {
   color: var(--black);
+}
+
+.white {
+  color: var(--white);
 }
 
 .gray {

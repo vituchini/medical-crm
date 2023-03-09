@@ -1,0 +1,68 @@
+.container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 56px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  background: linear-gradient(90deg, var(--secondary) 0%, var(--primary) 100%);
+  padding: 0 32px;
+  cursor: default;
+  z-index: 100;
+}
+
+.leftContainer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.rightContainer {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.leftContainer a {
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--white);
+  padding: 18px 24px;
+  text-decoration: none;
+}
+
+.leftContainer a:not(.active):hover {
+  cursor: pointer;
+  background: var(--transparent-black);
+}
+
+.active {
+  background: var(--transparent-black);
+}
+
+.hamburger {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .hamburger {
+    display: block;
+    cursor: pointer;
+  }
+
+  .leftContainer {
+    position: absolute;
+    z-index: 100;
+    top: 56px;
+    left: 0;
+    flex-direction: column;
+    background: linear-gradient(180deg, var(--secondary) 0%, var(--primary) 100%);
+  }
+
+  .hide {
+    display: none;
+  }
+}

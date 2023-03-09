@@ -2,7 +2,16 @@ import Icon, { IconTypes } from '../Icon/Icon';
 
 import styles from './ProfileLabel.module.css';
 
-type ProfileLabelColor = 'gray' | 'primary' | 'secondary' | 'warning' | 'danger' | 'success' | 'light-gray' | 'black';
+type ProfileLabelColor =
+  | 'white'
+  | 'gray'
+  | 'primary'
+  | 'secondary'
+  | 'warning'
+  | 'danger'
+  | 'success'
+  | 'light-gray'
+  | 'black';
 
 type ProfileLabelProps = {
   name?: string;

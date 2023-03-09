@@ -35,13 +35,15 @@ const Paginator = ({ skip, total, pageSize = 10, onPageChange }: PaginationProps
         (currentPage < DISPLAYED_COLUMNS - 3 && i < DISPLAYED_COLUMNS - 2) ||
         (currentPage > totalPages - (DISPLAYED_COLUMNS - 2) && i > totalPages - (DISPLAYED_COLUMNS - 1)) ||
         pages.includes(i) ? (
-          <li onClick={() => onPageChange(i * pageSize)} className={i === currentPage ? styles.active : ''}>
+          <li key={i} onClick={() => onPageChange(i * pageSize)} className={i === currentPage ? styles.active : ''}>
             {i + 1}
           </li>
         ) : dots.includes(i) ||
           (currentPage < DISPLAYED_COLUMNS - 2 && i === DISPLAYED_COLUMNS - 2) ||
           (currentPage > totalPages - (DISPLAYED_COLUMNS - 1) && i === totalPages - (DISPLAYED_COLUMNS - 1)) ? (
-          <li className={styles.dots}>...</li>
+          <li key={i} className={styles.dots}>
+            ...
+          </li>
         ) : null,
       )}
       <div className={styles.rightBtn}>
