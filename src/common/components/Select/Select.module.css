@@ -5,3 +5,7 @@
 .subLabel.error {
   color: var(--danger);
 }
+
+.arrowSelect {
+  padding: 0 14px;
+}

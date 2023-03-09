@@ -1,3 +1,4 @@
+import Icon, { IconTypes } from '../Icon/Icon';
 import React, { ComponentProps, ReactElement } from 'react';
 
 import SelectAbstraction from 'react-select';
@@ -13,6 +14,14 @@ type SelectProps<T> = {
   alignText?: 'left' | 'center' | 'right';
   onChange?: (value: T | T[], actionItem: any) => void;
 } & ComponentProps<SelectAbstraction>;
+
+const DropdownIndicator = () => {
+  return (
+    <div className={style.arrowSelect}>
+      <Icon size={10} type={IconTypes.arrowDown} />
+    </div>
+  );
+};
 
 const Select = <T,>({
   isSearchable = false,
@@ -40,19 +49,22 @@ const Select = <T,>({
     }),
     control: (base: any, state: any) => ({
       ...base,
-      border: 0,
+      border: '1px solid var(--default)',
       boxShadow: 0,
       pointerEvents: state.isDisabled ? 'auto' : '',
       cursor: state.isDisabled ? 'not-allowed' : 'default',
       background: state.isDisabled ? 'var(--default)' : 'var(--white)',
-      height: '32px',
       minHeight: '32px',
       fontSize: '12px',
-      '&:hover': {
-        border: 0,
+      '&:focus': {
+        border: '1px solid var(--default)',
       },
-      ...widthElement(),
+      '&:hover': {
+        border: '1px solid var(--default)',
+      },
       textAlign: alignText,
+      flexWrap: 'nowrap',
+      ...widthElement(),
       ...errorElement(),
     }),
     option: (provided: any, state: any) => ({
@@ -65,8 +77,8 @@ const Select = <T,>({
       paddingRight: '16px',
       color: 'var(--black)',
       fontSize: '12px',
-      ...widthElement(),
       textAlign: alignText,
+      ...widthElement(),
     }),
     valueContainer: (base: any) => ({
       ...base,
@@ -87,6 +99,7 @@ const Select = <T,>({
         isSearchable={isSearchable}
         onChange={props.onChange}
         styles={getStyles()}
+        components={{ DropdownIndicator }}
       />
     </div>
   );
