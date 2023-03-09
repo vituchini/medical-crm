@@ -208,6 +208,16 @@ const Examples = () => {
             error
           />
         </div>
+        <div style={{ margin: '16px 0' }}>
+          <Datepicker
+            subLabel="full width date picker"
+            value={dateSelected}
+            isFullWidth
+            onChange={(date: Date) => {
+              setDateSelected(date);
+            }}
+          />
+        </div>
       </div>
       <div>
         <Select

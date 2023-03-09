@@ -1,10 +1,46 @@
+.datepickerWrapper {
+  display: inline-block;
+}
+
+.datepickerWrapper.fullWidth,
+.datepickerWrapper.fullWidth .datepicker {
+  width: 100%;
+  box-sizing: border-box;
+}
+.datepickerWrapper .icon {
+  position: relative;
+}
+
+.datepickerWrapper .icon .iconEl.left,
+.datepickerWrapper .icon .iconEl.right {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+.datepickerWrapper .icon .iconEl.left {
+  left: 16px;
+}
+
+.datepickerWrapper .icon .iconEl.right {
+  right: 16px;
+}
+
+.datepickerWrapper .icon .datepicker.left {
+  padding: 0 16px 0 40.67px;
+}
+
+.datepickerWrapper .icon .datepicker.right {
+  padding: 0 40.67px 0 16px;
+}
+
 .datepickerWrapper .datepicker {
   border: 1px solid var(--default);
   border-radius: 4px;
   background: var(--white);
   height: 30px;
   width: 200px;
-  padding: 0 16px;
   outline: 0;
   font-size: 12px;
 }
