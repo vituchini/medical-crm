@@ -10,6 +10,13 @@
   flex-direction: column;
 }
 
+.name {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 200px;
+}
+
 .before {
   order: 0;
 }
@@ -19,9 +26,10 @@
 }
 
 .img {
+  cursor: default;
   border-radius: 50%;
   order: 1;
-  box-shadow: var(--light-gray) 0px 2px 8px 0px;
+  box-shadow: var(--light-gray) 0 2px 8px 0;
   height: 100%;
   width: 100%;
 }
@@ -56,4 +64,9 @@
 
 .gray {
   color: var(--gray);
+}
+
+.clickable:hover {
+  cursor: pointer;
+  filter: brightness(1.2);
 }
