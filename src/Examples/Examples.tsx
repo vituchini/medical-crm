@@ -15,6 +15,7 @@ import {
   SidebarFooterWrapper,
   SidebarItem,
   SidebarItemWrapper,
+  TableCard,
   Tabs,
 } from '../common/components';
 import React, { useState } from 'react';
@@ -275,6 +276,30 @@ const Examples = () => {
           />
           <ProfileLabel name="Big img bottom" textPosition="bottom" src="" imageSize={100} />
           <ProfileLabel name="Big text top" textPosition="top" src="" fontSize={30} />
+        </div>
+        <div className={style.flex}>
+          <TableCard
+            filters={
+              <>
+                <Select
+                  onChange={onChangeSelect}
+                  options={[
+                    { value: 'chocolate', label: 'Chocolate' },
+                    { value: 'strawberry', label: 'Strawberry' },
+                    { value: 'vanilla', label: 'Vanilla' },
+                  ]}
+                  placeholder="Dropdown"
+                />
+              </>
+            }
+            actions={
+              <>
+                <Button>Primary button</Button>
+              </>
+            }
+          >
+            content table card
+          </TableCard>
         </div>
       </div>
     </>

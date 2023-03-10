@@ -1,0 +1,17 @@
+.tableCardWrapper {
+  background: var(--white);
+  border: 1px solid var(--light-gray);
+  width: 100%;
+}
+
+.tableCardContent .tableCardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  gap: 16px;
+}
+
+.tableCardContent .tableCardBody {
+  border-top: 1px solid var(--light-gray);
+}

@@ -4,7 +4,6 @@ import Breadcrumbs from './Breadcrumbs/Breadcrumbs';
 import Button from './Button/Button';
 import Card from './Card/Card';
 import Checkbox from './Checkbox/Checkbox';
-import Header from './Header/Header';
 import Icon from './Icon/Icon';
 import Loader from './Loader/Loader';
 import Paginator from './Paginator/Paginator';
@@ -14,6 +13,7 @@ import RadioButton from './RadioButton/RadioButton';
 import Select from './Select/Select';
 import Sidebar from './Sidebar/Sidebar';
 import { SidebarFooterWrapper } from './Sidebar/SidebarFooter/SidebarFooter';
+import TableCard from './TableCard/TableCard';
 import Tabs from './Tabs/Tabs';
 
 export {
@@ -33,5 +33,5 @@ export {
   SidebarFooterWrapper,
   Paginator,
   ProfileLabel,
-  Header,
+  TableCard,
 };
