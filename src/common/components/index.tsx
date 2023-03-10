@@ -5,6 +5,7 @@ import Button from './Button/Button';
 import Card from './Card/Card';
 import Checkbox from './Checkbox/Checkbox';
 import Icon from './Icon/Icon';
+import Input from './Input/Input';
 import Loader from './Loader/Loader';
 import Paginator from './Paginator/Paginator';
 import Popup from './Popup/Popup';
@@ -13,7 +14,6 @@ import RadioButton from './RadioButton/RadioButton';
 import Select from './Select/Select';
 import Sidebar from './Sidebar/Sidebar';
 import { SidebarFooterWrapper } from './Sidebar/SidebarFooter/SidebarFooter';
-import TableCard from './TableCard/TableCard';
 import Tabs from './Tabs/Tabs';
 
 export {
@@ -33,5 +33,5 @@ export {
   SidebarFooterWrapper,
   Paginator,
   ProfileLabel,
-  TableCard,
+  Input,
 };

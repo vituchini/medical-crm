@@ -1,0 +1,75 @@
+.inputWrapper {
+    height: 32px;
+    width: 100%;
+    outline: none;
+    padding: 6px 12px;
+    box-sizing: border-box;
+    transition: 0.3s;
+    background: var(--white);
+    border: 1px solid var(--default);
+    border-radius: 4px;
+    line-height: 20px;
+}
+
+.error input {
+    border: 1px solid var(--danger) !important;
+}
+
+label {
+    color: var(--gray);
+}
+
+.error label  {
+    color: var(--danger);
+}
+
+.inputWrapper:focus {
+    border-color: var(--primary)
+}
+
+.inputWrapper:hover {
+    cursor: pointer;
+    filter: brightness(1);
+}
+
+.leftIconPosition > span {
+    left: 0;
+}
+
+.rightIconPosition > span {
+    right: 0;
+}
+
+.rightIconPosition input {
+    padding-right: 36px;
+}
+
+.leftIconPosition input {
+    padding-left: 36px;
+}
+
+.inputWithIcon {
+    position: relative;
+}
+
+.inputWithIcon > span {
+    position: absolute;
+    top: 8px;
+    padding: 0 10px;
+}
+
+.disabled {
+    cursor: not-allowed !important;
+    background-color: var(--light-gray);
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    appearance: none;
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}

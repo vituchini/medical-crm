@@ -91,7 +91,16 @@ export enum IconTypes {
   import = 'import',
 }
 
-type IconColor = 'white' | 'gray' | 'primary' | 'secondary' | 'warning' | 'danger' | 'success' | 'light-gray' | 'black';
+export type IconColor =
+  | 'white'
+  | 'gray'
+  | 'primary'
+  | 'secondary'
+  | 'warning'
+  | 'danger'
+  | 'success'
+  | 'light-gray'
+  | 'black';
 
 type IconProps = {
   type?: IconTypes;
