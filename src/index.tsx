@@ -1,4 +1,3 @@
-import './common/styles/colors.css';
 import './index.css';
 import './i18n';
 

@@ -30,22 +30,22 @@ const Paginator = ({ skip, total, pageSize = 10, onPageChange }: PaginationProps
           {t('Previous')}
         </Button>
       </div>
-      {Array.from({ length: Math.ceil(total / pageSize) }, (_, i) =>
-        totalPages <= DISPLAYED_COLUMNS ||
-        (currentPage < DISPLAYED_COLUMNS - 3 && i < DISPLAYED_COLUMNS - 2) ||
-        (currentPage > totalPages - (DISPLAYED_COLUMNS - 2) && i > totalPages - (DISPLAYED_COLUMNS - 1)) ||
-        pages.includes(i) ? (
-          <li key={i} onClick={() => onPageChange(i * pageSize)} className={i === currentPage ? styles.active : ''}>
-            {i + 1}
-          </li>
-        ) : dots.includes(i) ||
+      {Array.from({ length: Math.ceil(total / pageSize) }, (_, i) => (
+        <span key={'pagination-' + i}>
+          {totalPages <= DISPLAYED_COLUMNS ||
+          (currentPage < DISPLAYED_COLUMNS - 3 && i < DISPLAYED_COLUMNS - 2) ||
+          (currentPage > totalPages - (DISPLAYED_COLUMNS - 2) && i > totalPages - (DISPLAYED_COLUMNS - 1)) ||
+          pages.includes(i) ? (
+            <li onClick={() => onPageChange(i * pageSize)} className={i === currentPage ? styles.active : ''}>
+              {i + 1}
+            </li>
+          ) : dots.includes(i) ||
           (currentPage < DISPLAYED_COLUMNS - 2 && i === DISPLAYED_COLUMNS - 2) ||
           (currentPage > totalPages - (DISPLAYED_COLUMNS - 1) && i === totalPages - (DISPLAYED_COLUMNS - 1)) ? (
-          <li key={i} className={styles.dots}>
-            ...
-          </li>
-        ) : null,
-      )}
+            <li className={styles.dots}>...</li>
+          ) : null}
+        </span>
+      ))}
       <div className={styles.rightBtn}>
         <Button type="border" disabled={currentPage === totalPages - 1} onClick={goNext}>
           {t('Next')}

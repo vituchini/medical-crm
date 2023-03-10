@@ -1,4 +1,4 @@
-import Icon, { IconTypes } from '../../Icon/Icon';
+import Icon, { IconTypes } from '../Icon/Icon';
 import React, { ReactNode, useState } from 'react';
 
 import style from './SidebarItem.module.css';
@@ -20,7 +20,7 @@ const SidebarItemWrapper = (props: SidebarItemWrapperProps) => (
 
 const SidebarItem = ({ label, to, icon }: SidebarItemProps) => {
   const location = useLocation();
-  const [active, setActive] = useState(location.pathname.includes(to));
+  const [active] = useState(location.pathname.includes(to));
 
   return (
     <a className={`${style.linkItem} ${active ? style.active : ''}`} href={to}>

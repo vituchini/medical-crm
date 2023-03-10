@@ -10,4 +10,4 @@ const SidebarFooterWrapper = (props: SidebarFooterWrapperProps) => (
   <div className={style.sidebarFooter}>{props.children}</div>
 );
 
-export { SidebarFooterWrapper };
+export default SidebarFooterWrapper;
