@@ -6,12 +6,10 @@ import styles from './Input.module.css';
 type IconPosition = 'left' | 'right';
 
 export type InputProps = {
-  value: string;
+  value: string | number;
   placeholder?: string;
   disabled?: boolean;
-  onChange: (value: any, e: React.ChangeEvent<HTMLInputElement>) => void;
-  isFullWidth?: boolean;
-  width?: string;
+  onChange: (value: any, e: ChangeEvent<HTMLInputElement>) => void;
   type?: string;
   name?: string;
   id?: string;
@@ -27,7 +25,6 @@ export type InputProps = {
 
 const Input = ({
   value,
-  isFullWidth,
   icon,
   error,
   placeholder,
