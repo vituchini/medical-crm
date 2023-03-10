@@ -1,0 +1,36 @@
+.container {
+  background-color: white;
+  width: 100%;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  border: 1px solid var(--light-gray);
+  padding: 16px;
+  line-height: 24px;
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.expanded {
+  padding: 16px 32px;
+}
+
+.icon {
+  padding: 0 6px;
+  border-radius: 50%;
+}
+
+.icon:hover {
+  cursor: pointer;
+  background: var(--light-gray);
+}

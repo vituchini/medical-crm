@@ -3,6 +3,7 @@ import { ReactComponent as Add } from '../../../assets/add.svg';
 import { ReactComponent as Approved } from '../../../assets/approved.svg';
 import { ReactComponent as ArrowDown } from '../../../assets/arrow-down.svg';
 import { ReactComponent as ArrowRight } from '../../../assets/arrow-right.svg';
+import { ReactComponent as ArrowUp } from '../../../assets/arrow-up.svg';
 import { ReactComponent as Building } from '../../../assets/building.svg';
 import { ReactComponent as Close } from '../../../assets/close.svg';
 import { ReactComponent as Date } from '../../../assets/date.svg';
@@ -56,6 +57,7 @@ export enum IconTypes {
   userFile = 'userFile',
   userBadge = 'userBadge',
   arrowDown = 'arrowDown',
+  arrowUp = 'arrowUp',
   arrowRight = 'arrowRight',
   close = 'close',
   rejected = 'rejected',
@@ -133,6 +135,8 @@ const iconByType = (type?: IconTypes) => {
       return <UserBadge />;
     case IconTypes.arrowDown:
       return <ArrowDown />;
+    case IconTypes.arrowUp:
+      return <ArrowUp />;
     case IconTypes.arrowRight:
       return <ArrowRight />;
     case IconTypes.close:

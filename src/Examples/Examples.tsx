@@ -3,9 +3,8 @@ import {
   Button,
   Card,
   Checkbox,
-  Header,
+  ExpansionPanel,
   Icon,
-  Input,
   Loader,
   Paginator,
   Popup,
@@ -16,7 +15,6 @@ import {
   SidebarFooterWrapper,
   SidebarItem,
   SidebarItemWrapper,
-  TableCard,
   Tabs,
 } from '../common/components';
 import React, { useState } from 'react';
@@ -40,13 +38,6 @@ const Examples = () => {
   const [checkbox5, setCheckbox5] = useState(false);
 
   const [toggleSidebar, setToggleSidebar] = useState(false);
-
-  const [inputValue1, setInputValue1] = useState('');
-  const [inputValue2, setInputValue2] = useState('');
-  const [inputValue3, setInputValue3] = useState('');
-  const [inputValue4, setInputValue4] = useState('');
-  const [inputValue5, setInputValue5] = useState('');
-  const [inputValue6, setInputValue6] = useState('');
 
   const tabs = [
     { _id: '0', content: <>Tab</> },
@@ -84,14 +75,6 @@ const Examples = () => {
 
   return (
     <>
-      <Header
-        options={[
-          {
-            label: 'Examples',
-            path: '/examples',
-          },
-        ]}
-      />
       <Sidebar isHidden={toggleSidebar}>
         <SidebarItemWrapper>
           {items?.map((item, index) => (
@@ -268,71 +251,6 @@ const Examples = () => {
             placeholder="Dropdown"
           />
         </div>
-        <div className={style.flex}>
-          <Input
-            label="default"
-            placeholder="Default input"
-            value={inputValue1}
-            onChange={(value) => setInputValue1(value)}
-          />
-          <Input
-            label="error"
-            placeholder="Error input"
-            error
-            value={inputValue2}
-            onChange={(value) => setInputValue2(value)}
-          />
-          <Input
-            label="icon left input"
-            placeholder="icon left input"
-            icon={{
-              type: IconTypes.close,
-              position: 'left',
-            }}
-            value={inputValue3}
-            onChange={(value) => setInputValue3(value)}
-          />
-
-          <Input
-            label="input with label"
-            placeholder="icon right input"
-            icon={{
-              type: IconTypes.date,
-              position: 'right',
-              iconColor: 'warning',
-            }}
-            value={inputValue4}
-            onChange={(value) => setInputValue4(value)}
-          />
-          <Input
-            placeholder="disabled input"
-            label="disabled input"
-            disabled
-            value={inputValue5}
-            onChange={(value) => setInputValue5(value)}
-          />
-          <Input
-            placeholder="number input"
-            label="number input"
-            type="number"
-            value={inputValue5}
-            onChange={(value) => setInputValue5(value)}
-          />
-          <div style={{ width: '100%' }}>
-            <Input
-              label="full width input"
-              icon={{
-                type: IconTypes.date,
-                position: 'right',
-                iconColor: 'warning',
-              }}
-              type="password"
-              placeholder="full width input"
-              value={inputValue6}
-              onChange={(value) => setInputValue6(value)}
-            />
-          </div>
-        </div>
         <div className={style.container} style={{ textAlign: 'right' }}>
           <Button onClick={() => setToggleSidebar(!toggleSidebar)}>toggle sidebar</Button>
         </div>
@@ -351,28 +269,14 @@ const Examples = () => {
           <ProfileLabel name="Big text top" textPosition="top" src="" fontSize={30} />
         </div>
         <div className={style.flex}>
-          <TableCard
-            filters={
-              <>
-                <Select
-                  onChange={onChangeSelect}
-                  options={[
-                    { value: 'chocolate', label: 'Chocolate' },
-                    { value: 'strawberry', label: 'Strawberry' },
-                    { value: 'vanilla', label: 'Vanilla' },
-                  ]}
-                  placeholder="Dropdown"
-                />
-              </>
-            }
-            actions={
-              <>
-                <Button>Primary button</Button>
-              </>
-            }
-          >
-            content table card
-          </TableCard>
+          <div style={{ width: '100%' }}>
+            <ExpansionPanel title="Case: Johannes van Dover" header={<p>header content</p>}>
+              <h3>Expanded content</h3>
+            </ExpansionPanel>
+            <ExpansionPanel title="Situatieschets" header={<p>some content</p>}>
+              <h3>Expanded</h3>
+            </ExpansionPanel>
+          </div>
         </div>
       </div>
     </>

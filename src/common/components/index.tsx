@@ -4,8 +4,8 @@ import Breadcrumbs from './Breadcrumbs/Breadcrumbs';
 import Button from './Button/Button';
 import Card from './Card/Card';
 import Checkbox from './Checkbox/Checkbox';
+import ExpansionPanel from './ExpansionPanel/ExpansionPanel';
 import Icon from './Icon/Icon';
-import Input from './Input/Input';
 import Loader from './Loader/Loader';
 import Paginator from './Paginator/Paginator';
 import Popup from './Popup/Popup';
@@ -33,5 +33,5 @@ export {
   SidebarFooterWrapper,
   Paginator,
   ProfileLabel,
-  Input,
+  ExpansionPanel,
 };
