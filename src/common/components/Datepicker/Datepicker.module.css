@@ -1,12 +1,8 @@
 .datepickerWrapper {
-  display: inline-block;
-}
-
-.datepickerWrapper.fullWidth,
-.datepickerWrapper.fullWidth .datepicker {
   width: 100%;
   box-sizing: border-box;
 }
+
 .datepickerWrapper .icon {
   position: relative;
 }
@@ -28,11 +24,11 @@
 }
 
 .datepickerWrapper .icon .datepicker.left {
-  padding: 0 16px 0 40.67px;
+  padding: 0 16px 0 40px;
 }
 
 .datepickerWrapper .icon .datepicker.right {
-  padding: 0 40.67px 0 16px;
+  padding: 0 40px 0 16px;
 }
 
 .datepickerWrapper .datepicker {
@@ -40,9 +36,10 @@
   border-radius: 4px;
   background: var(--white);
   height: 30px;
-  width: 200px;
+  width: 100%;
   outline: 0;
   font-size: 12px;
+  box-sizing: border-box;
 }
 
 .datepickerWrapper .datepicker.error {
@@ -55,6 +52,14 @@
   border-color: var(--default);
 }
 
-.datepickerWrapper .subLabel {
+.datepickerWrapper .label {
   color: var(--gray);
+}
+
+.datepickerWrapper .customCalendarContainer {
+  z-index: 2;
+}
+
+.someCustomClass {
+  z-index: 2;
 }

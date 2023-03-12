@@ -1,42 +1,53 @@
 import 'react-datepicker/dist/react-datepicker.css';
 
+import DatePickerAbstraction, { CalendarContainer } from 'react-datepicker';
 import Icon, { IconTypes } from '../Icon/Icon';
-import React, { ComponentProps } from 'react';
+import React, { ComponentProps, ReactNode } from 'react';
 
-import DatePickerAbstraction from 'react-datepicker';
 import style from './Datepicker.module.css';
 
 type DatepickerProps = {
-  onChange: (date: Date) => Date;
+  onChange: (dateS: string, date: Date) => Date;
+  value?: string;
+  placeholder?: string;
+  label?: string;
   error?: boolean;
   disabled?: boolean;
-  isFullWidth?: boolean;
+  editabled?: boolean;
   iconPosition?: 'left' | 'right';
-  value?: Date;
-  placeholder?: string;
-  subLabel?: string;
 } & ComponentProps<any>;
 
-const Datepicker = ({ iconPosition = 'left', ...props }: DatepickerProps) => {
+const CustomCalendarContainer = ({ className, children }: { className: string; children: ReactNode | ReactNode }) => (
+  <div className={style.customCalendarContainer}>
+    <CalendarContainer className={className}>{children}</CalendarContainer>
+  </div>
+);
+
+const Datepicker = ({ editabled = true, iconPosition = 'left', ...props }: DatepickerProps) => {
   return (
-    <div className={`${style.datepickerWrapper}  ${props.isFullWidth ? style.fullWidth : ''}`}>
-      {props.subLabel && (
-        <label className={`${style.subLabel} ${props.error ? style.error : ''}`}>{props.subLabel}</label>
-      )}
-      <div className={style.icon}>
-        <span className={style.iconEl + ' ' + style[iconPosition]}>
-          <Icon size={16.67} type={IconTypes.date} />
-        </span>
-        <DatePickerAbstraction
-          {...props}
-          selected={props.value}
-          placeholderText={props.placeholder}
-          className={`${style.datepicker} ${style[iconPosition]} ${props.error ? style.error : ''} ${
-            props.disabled ? style.disabled : ''
-          }`}
-          onChange={props.onChange}
-        />
-      </div>
+    <div className={style.datepickerWrapper}>
+      <label htmlFor={props.value} className={`${style.label} ${props.error ? style.error : ''}`}>
+        {props.label}
+        <div className={style.icon}>
+          <span className={style.iconEl + ' ' + style[iconPosition]}>
+            <Icon size={16} type={IconTypes.date} />
+          </span>
+          <DatePickerAbstraction
+            {...props}
+            popperClassName={style.someCustomClass}
+            calendarContainer={CustomCalendarContainer}
+            selected={props.value}
+            placeholderText={props.placeholder}
+            readOnly={!editabled}
+            className={`
+              ${style.datepicker} 
+              ${style[iconPosition]} 
+              ${props.error ? style.error : ''} 
+              ${props.disabled ? style.disabled : ''}`}
+            onChange={(date: Date) => props.onChange(date.toISOString(), date)}
+          />
+        </div>
+      </label>
     </div>
   );
 };

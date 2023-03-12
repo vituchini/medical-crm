@@ -1,3 +1,7 @@
+.selectWrapper {
+  width: 100%;
+}
+
 .subLabel {
   color: var(--gray);
 }

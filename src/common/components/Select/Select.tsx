@@ -29,8 +29,6 @@ const Select = <T,>({
   alignText = 'left',
   ...props
 }: SelectProps<T>): ReactElement => {
-  const widthElement = () => ({ width: props.isFullWidth ? '100%' : '200px' });
-
   const errorElement = () =>
     props.error
       ? {
@@ -44,7 +42,7 @@ const Select = <T,>({
   const getStyles = () => ({
     menu: (provided: any) => ({
       ...provided,
-      ...widthElement(),
+      width: '100%',
       textAlign: alignText,
     }),
     control: (base: any, state: any) => ({
@@ -64,7 +62,7 @@ const Select = <T,>({
       },
       textAlign: alignText,
       flexWrap: 'nowrap',
-      ...widthElement(),
+      width: '100%',
       ...errorElement(),
     }),
     option: (provided: any, state: any) => ({
@@ -78,7 +76,7 @@ const Select = <T,>({
       color: 'var(--black)',
       fontSize: '12px',
       textAlign: alignText,
-      ...widthElement(),
+      width: '100%',
     }),
     valueContainer: (base: any) => ({
       ...base,
