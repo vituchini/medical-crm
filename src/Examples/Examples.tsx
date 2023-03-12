@@ -16,6 +16,7 @@ import {
   SidebarFooterWrapper,
   SidebarItem,
   SidebarItemWrapper,
+  TableCard,
   TableLoader,
   TableNoData,
   Tabs,
@@ -368,6 +369,29 @@ const Examples = () => {
               setDateSelected(date);
             }}
           />
+          <br />
+          <TableCard
+            filters={
+              <>
+                <Select
+                  onChange={onChangeSelect}
+                  options={[
+                    { value: 'chocolate', label: 'Chocolate' },
+                    { value: 'strawberry', label: 'Strawberry' },
+                    { value: 'vanilla', label: 'Vanilla' },
+                  ]}
+                  placeholder="Dropdown"
+                />
+              </>
+            }
+            actions={
+              <>
+                <Button>Primary button</Button>
+              </>
+            }
+          >
+            content table card
+          </TableCard>
         </div>
       </div>
     </>
