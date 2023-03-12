@@ -1,36 +1,26 @@
 import Icon, { IconTypes } from '../Icon/Icon';
+import { ReactNode, useState } from 'react';
 
-import ProfileLabel from '../ProfileLabel/ProfileLabel';
 import styles from './Header.module.css';
-import { useState } from 'react';
 
-type Option = {
-  label: string;
-  path: `${'/'}${string}`;
-}
 type HeaderProps = {
-  options: Option[]
-}
+  leftActions: ReactNode | ReactNode[];
+  rightActions: ReactNode | ReactNode[];
+  mobileActions: ReactNode | ReactNode[];
+};
 
-const Header = ({options} : HeaderProps ) => {
+const Header = ({ leftActions, rightActions, mobileActions }: HeaderProps) => {
   const [visible, setVisible] = useState(false);
   return (
-    <div className={styles.container}>
-       <div>
+    <div className={styles.mainContainer}>
+      <div className={styles.container}>
         <div className={styles.hamburger} onClick={() => setVisible((prev) => !prev)}>
           <Icon type={IconTypes.hamburger} iconColor="white" />
         </div>
-        <div className={`${styles.leftContainer} ${visible ? '' : styles.hide}`}>
-         {options.map((option) =><a key={option.label} className={location.pathname.startsWith(option.path) ? styles.active : ''} href={option.path}>
-            {option.label}
-          </a>
-        )}
-        </div>
+        <div className={styles.leftContainer}>{leftActions}</div>
+        <div className={styles.rightContainer}>{rightActions}</div>
       </div>
-      <div className={styles.rightContainer}>
-        <ProfileLabel name="test" src="" textColor="white" />
-        <Icon type={IconTypes.notification} iconColor="white" />
-      </div>
+      <div className={`${styles.mobileContainer} ${visible ? styles.displayMobile : ''}`}>{mobileActions}</div>
     </div>
   );
 };

@@ -1,3 +1,6 @@
+.mainContainer {
+  color: var(--white);
+}
 .container {
   position: fixed;
   top: 0;
@@ -9,12 +12,11 @@
   justify-content: space-between;
   gap: 32px;
   background: linear-gradient(90deg, var(--secondary) 0%, var(--primary) 100%);
-  padding: 0 32px;
-  cursor: default;
   z-index: 100;
 }
 
 .leftContainer {
+  padding-left: 32px;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -24,26 +26,15 @@
   display: flex;
   align-items: center;
   gap: 32px;
-}
-
-.leftContainer a {
-  font-size: 14px;
-  line-height: 20px;
-  color: var(--white);
-  padding: 18px 24px;
-  text-decoration: none;
-}
-
-.leftContainer a:not(.active):hover {
-  cursor: pointer;
-  background: var(--transparent-black);
-}
-
-.active {
-  background: var(--transparent-black);
+  padding-right: 32px;
 }
 
 .hamburger {
+  display: none;
+  margin-left: 32px;
+}
+
+.mobileContainer {
   display: none;
 }
 
@@ -54,15 +45,19 @@
   }
 
   .leftContainer {
-    position: absolute;
+    display: none;
+  }
+
+  .mobileContainer {
+    position: fixed;
     z-index: 100;
     top: 56px;
     left: 0;
-    flex-direction: column;
-    background: linear-gradient(180deg, var(--secondary) 0%, var(--primary) 100%);
+    background: linear-gradient(90deg, var(--secondary) 0%, var(--primary) 100%);
+    padding: 0 32px;
   }
 
-  .hide {
-    display: none;
+  .displayMobile {
+    display: block;
   }
 }
