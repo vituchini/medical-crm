@@ -21,7 +21,7 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path={PATHS.AUTH.LOGIN} element={<Login />} />
+        <Route path={PATHS.AUTH.SIGN_IN} element={<Login />} />
         <Route path={PATHS.EXAMPLES} element={<Examples />} />
 
         <Route path="/" element={<PrivateRouter />}>
