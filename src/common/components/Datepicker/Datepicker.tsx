@@ -12,8 +12,7 @@ type DatepickerProps = {
   placeholder?: string;
   label?: string;
   error?: boolean;
-  disabled?: boolean;
-  editabled?: boolean;
+  name?: string;
   iconPosition?: 'left' | 'right';
 } & ComponentProps<any>;
 
@@ -23,10 +22,10 @@ const CustomCalendarContainer = ({ className, children }: { className: string; c
   </div>
 );
 
-const Datepicker = ({ editabled = true, iconPosition = 'left', ...props }: DatepickerProps) => {
+const Datepicker = ({ iconPosition = 'left', ...props }: DatepickerProps) => {
   return (
     <div className={style.datepickerWrapper}>
-      <label htmlFor={props.value} className={`${style.label} ${props.error ? style.error : ''}`}>
+      <label htmlFor={props.name} className={`${style.label} ${props.error ? style.error : ''}`}>
         {props.label}
         <div className={style.icon}>
           <span className={style.iconEl + ' ' + style[iconPosition]}>
@@ -38,7 +37,7 @@ const Datepicker = ({ editabled = true, iconPosition = 'left', ...props }: Datep
             calendarContainer={CustomCalendarContainer}
             selected={props.value}
             placeholderText={props.placeholder}
-            readOnly={!editabled}
+            id={props.name}
             className={`
               ${style.datepicker} 
               ${style[iconPosition]} 

@@ -321,6 +321,16 @@ const Examples = () => {
         </div>
         <div className={style.flex}>
           <Datepicker
+            name="ici"
+            label="selected date"
+            value={dateSelected}
+            onChange={(dateS: string, date: Date) => {
+              console.log(dateS, date);
+              setDateSelected(date);
+            }}
+          />
+          <Datepicker
+            name="here"
             label="selected date"
             value={dateSelected}
             onChange={(dateS: string, date: Date) => {
@@ -363,7 +373,7 @@ const Examples = () => {
             label="read only date picker"
             value={dateSelected}
             isFullWidth
-            editabled={false}
+            readOnly
             onChange={(dateS: string, date: Date) => {
               console.log(dateS, date);
               setDateSelected(date);
