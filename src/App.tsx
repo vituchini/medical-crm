@@ -21,6 +21,8 @@ function App() {
   return (
     <div className="App">
       <Routes>
+        <Route path={PATHS.AUTH.LOGIN} element={<a href="/signin">Login</a>} /> {/*TODO*/}
+
         <Route path={PATHS.AUTH.SIGN_IN} element={<Login />} />
         <Route path={PATHS.EXAMPLES} element={<Examples />} />
 
