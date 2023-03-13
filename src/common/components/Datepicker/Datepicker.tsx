@@ -10,10 +10,11 @@ type DatepickerProps = {
   onChange: (dateS: string, date: Date) => Date;
   value?: string;
   placeholder?: string;
+  iconPosition?: 'left' | 'right';
+  name?: string;
   label?: string;
   error?: boolean;
-  name?: string;
-  iconPosition?: 'left' | 'right';
+  disabled?: boolean;
 } & ComponentProps<any>;
 
 const CustomCalendarContainer = ({ className, children }: { className: string; children: ReactNode | ReactNode }) => (
