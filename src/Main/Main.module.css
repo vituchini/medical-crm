@@ -4,9 +4,14 @@
     display: flex;
 }
 
-.contentContainer {
-    height: 100%;
+.contentWrapper {
     width: calc(100% - 256px);
-    padding: 32px;
+    display: flex;
     overflow: auto;
+    padding: 32px;
+}
+
+.contentContainer {
+    margin: 0 auto;
+    height: 15000px; /*TODO*/
 }

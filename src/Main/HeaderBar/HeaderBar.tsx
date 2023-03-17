@@ -5,11 +5,10 @@ import { Header } from "../../common/components";
 
 const HeaderBar = () => {
   return (
-    <Header
-      leftActions={<>Left</>}
-      rightActions={<>Right</>}
-      mobileActions={<>Mobile</>}
-    />
+    <div className={style.test}>
+
+      <Header leftActions={<>Left</>} rightActions={<>Right</>} mobileActions={<>Mobile</>}/>
+    </div>
   )
 }
 

@@ -12,14 +12,15 @@ const Main = () => {
   return (
     <>
       <HeaderBar/>
-
       <div className={style.container}>
         <SidebarMenu/>
-        <div className={style.contentContainer}>
-          <Routes>
-            <Route path={PATHS.DASHBOARD.ROOT} element={<Dashboard/>}/>
-            <Route path={PATHS.DASHBOARD.EDIT} element={<Dashboard/>}/>
-          </Routes>
+        <div className={style.contentWrapper}>
+          <div className={style.contentContainer}>
+            <Routes>
+              <Route path={PATHS.DASHBOARD.ROOT} element={<Dashboard/>}/>
+              <Route path={PATHS.DASHBOARD.EDIT} element={<Dashboard/>}/>
+            </Routes>
+          </div>
         </div>
       </div>
     </>
