@@ -1,6 +1,6 @@
 import { PATHS } from '../common/constants/routes';
 import React from 'react';
-import style from './style.module.css';
+import style from './Dashboard.module.css';
 import { useNavigate } from 'react-router-dom';
 
 const Dashboard = () => {

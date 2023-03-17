@@ -1,15 +1,16 @@
-import './App.css';
-
-import { LocalStorage, SessionStorage } from './utils/storage';
+import React from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 
-import Dashboard from './Dashboard/Dashboard';
-import Examples from './Examples/Examples';
+import { PATHS } from './common/constants/routes';
+import { LocalStorage, SessionStorage } from './utils/storage';
+import './App.css';
+
+import PrivateRouter from './PrivateRouter';
+
 import { Login } from './Auth';
 import Logout from './Logout/Logout';
-import { PATHS } from './common/constants/routes';
-import PrivateRouter from './PrivateRouter';
-import React from 'react';
+import Examples from './Examples/Examples';
+import Main from "./Main/Main";
 
 function App() {
   const sessionToken = SessionStorage.get('access_token');
@@ -26,10 +27,14 @@ function App() {
         <Route path={PATHS.AUTH.SIGN_IN} element={<Login />} />
         <Route path={PATHS.EXAMPLES} element={<Examples />} />
 
-        <Route path="/" element={<PrivateRouter />}>
-          <Route path={PATHS.DASHBOARD.ROOT} element={<Dashboard />} />
-          <Route path={PATHS.DASHBOARD.EDIT} element={<Dashboard />} />
-        </Route>
+        <Route
+          path="/*"
+          element={
+            <PrivateRouter>
+              <Main/>
+            </PrivateRouter>
+          }
+        />
 
         <Route path={PATHS.LOGOUT} element={<Logout />} />
 

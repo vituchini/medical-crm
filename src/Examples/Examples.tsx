@@ -20,7 +20,7 @@ import {
 import React, { useState } from 'react';
 
 import { IconTypes } from '../common/components/Icon/Icon';
-import style from './style.module.css';
+import style from './Examples.module.css';
 
 const Examples = () => {
   const [visible, setVisible] = useState(false);
