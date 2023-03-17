@@ -11,7 +11,6 @@ type ExpansionPanelProps = {
 
 const ExpansionPanel = ({ title, header, children }: ExpansionPanelProps) => {
   const [expanded, setExpanded] = useState(false);
-  const accordian = useRef<any>();
   return (
     <div className={styles.container}>
       <div className={styles.header}>
@@ -23,8 +22,8 @@ const ExpansionPanel = ({ title, header, children }: ExpansionPanelProps) => {
         </div>
         <div>{header}</div>
       </div>
-      <div className={`${styles.accordian} ${expanded ? styles.active : ''}`}>
-        <div>{children}</div>
+      <div className={`${styles.accordion} ${expanded ? styles.active : ''}`}>
+        <div className={styles.expanded}>{children}</div>
       </div>
     </div>
   );

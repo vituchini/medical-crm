@@ -31,14 +31,17 @@
   background: var(--light-gray);
 }
 
-.accordian {
-  transition: 0.1s linear;
-  max-height: 0;
-  overflow: hidden;
+.expanded {
   padding: 16px 32px;
 }
 
-.accordian.active {
+.accordion {
   transition: 0.1s linear;
+  max-height: 0;
+  overflow: hidden;
+}
+
+.accordion.active {
+  transition: 0.3s linear;
   max-height: 90vh;
 }
