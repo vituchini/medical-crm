@@ -7,11 +7,10 @@ type HeaderProps = {
   leftActions: ReactNode | ReactNode[];
   rightActions: ReactNode | ReactNode[];
   mobileActions: ReactNode | ReactNode[];
-  onClick: () => void;
+  onClick?: () => void;
 };
 
 const Header = ({ leftActions, rightActions, mobileActions, onClick }: HeaderProps) => {
-  const [visible, setVisible] = useState(false);
   return (
     <div className={styles.mainContainer}>
       <div className={styles.container}>

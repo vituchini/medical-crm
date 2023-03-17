@@ -1,20 +1,27 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import { PATHS } from "../common/constants/routes";
+import style from "./Main.module.css";
 
 import Dashboard from "../Dashboard/Dashboard";
-// import { Sidebar } from "../common/components";
+import HeaderBar from "./HeaderBar/HeaderBar";
+import SidebarMenu from "./SidebarMenu/SidebarMenu";
 
 const Main = () => {
 
   return (
     <>
-      {/*Header*/}
-      {/*<Sidebar/>*/}
-      <Routes>
-        <Route path={PATHS.DASHBOARD.ROOT} element={<Dashboard/>}/>
-        <Route path={PATHS.DASHBOARD.EDIT} element={<Dashboard/>}/>
-      </Routes>
+      <HeaderBar/>
+
+      <div className={style.container}>
+        <SidebarMenu/>
+        <div className={style.contentContainer}>
+          <Routes>
+            <Route path={PATHS.DASHBOARD.ROOT} element={<Dashboard/>}/>
+            <Route path={PATHS.DASHBOARD.EDIT} element={<Dashboard/>}/>
+          </Routes>
+        </div>
+      </div>
     </>
   )
 }

@@ -1,9 +1,9 @@
 .sidebarWrapper {
-  position: fixed;
+  height: 100%;
+  width: 256px;
   left: 0;
   top: 56px;
   bottom: 0;
-  width: 256px;
   background: var(--white);
   box-shadow: 1px 0 0 var(--light-gray);
   z-index: 9;
