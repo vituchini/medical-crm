@@ -3,9 +3,8 @@ import {
   Button,
   Card,
   Checkbox,
-  Datepicker,
+  Header,
   Icon,
-  Input,
   Loader,
   Paginator,
   Popup,
@@ -16,11 +15,7 @@ import {
   SidebarFooterWrapper,
   SidebarItem,
   SidebarItemWrapper,
-  TableCard,
-  TableLoader,
-  TableNoData,
   Tabs,
-  Thead,
 } from '../common/components';
 import React, { useState } from 'react';
 
@@ -29,9 +24,8 @@ import style from './style.module.css';
 
 const Examples = () => {
   const [visible, setVisible] = useState(false);
+  const [visibleMenu, setVisibleMenu] = useState(false);
   const [skip, setSkip] = useState(0);
-
-  const [sort, setSort] = useState<any>();
 
   const [radio, setRadio] = useState({
     value: 'on',
@@ -46,13 +40,6 @@ const Examples = () => {
 
   const [toggleSidebar, setToggleSidebar] = useState(false);
 
-  const [inputValue1, setInputValue1] = useState('');
-  const [inputValue2, setInputValue2] = useState('');
-  const [inputValue3, setInputValue3] = useState('');
-  const [inputValue4, setInputValue4] = useState('');
-  const [inputValue5, setInputValue5] = useState('');
-  const [inputValue6, setInputValue6] = useState('');
-
   const tabs = [
     { _id: '0', content: <>Tab</> },
     { _id: '1', content: <>Tab</> },
@@ -60,10 +47,6 @@ const Examples = () => {
     { _id: '3', content: <>Tab</> },
   ];
   const [currentTab, setCurrentTab] = useState(tabs[0]._id);
-
-  const [dateSelected, setDateSelected] = useState<Date | null>(new Date());
-  const [dateSelectedNull, setDateSelectedNull] = useState<Date | null>(null);
-  const [dateSelectedError, setDateSelectedError] = useState<Date | null>(null);
 
   const radioItems = [
     {
@@ -93,6 +76,12 @@ const Examples = () => {
 
   return (
     <>
+      <Header
+        leftActions={<p>left</p>}
+        rightActions={<p>right</p>}
+        mobileActions={visibleMenu && <p>mobile</p>}
+        onClick={() => setVisibleMenu((prev) => !prev)}
+      />
       <Sidebar isHidden={toggleSidebar}>
         <SidebarItemWrapper>
           {items?.map((item, index) => (
@@ -183,124 +172,91 @@ const Examples = () => {
           </Button>
         </div>
         <Paginator skip={skip} total={150} onPageChange={onPageChange} />
+        <div className={style.flex}>
+          <div className={style.flex}>
+            <div>
+              <Select
+                subLabel="default select"
+                onChange={onChangeSelect}
+                options={[
+                  { value: 'chocolate', label: 'Chocolate' },
+                  { value: 'strawberry', label: 'Strawberry' },
+                  { value: 'vanilla', label: 'Vanilla' },
+                ]}
+                placeholder="Dropdown"
+              />
+            </div>
+            <br />
+            <div>
+              <Select
+                subLabel="searchable select"
+                onChange={onChangeSelect}
+                isSearchable
+                options={[
+                  { value: 'chocolate', label: 'Chocolate' },
+                  { value: 'strawberry', label: 'Strawberry' },
+                  { value: 'vanilla', label: 'Vanilla' },
+                ]}
+                placeholder="Dropdown"
+              />
+            </div>
+            <br />
+            <div>
+              <Select
+                subLabel="disabled select"
+                onChange={onChangeSelect}
+                disabled
+                options={[
+                  { value: 'chocolate', label: 'Chocolate' },
+                  { value: 'strawberry', label: 'Strawberry' },
+                  { value: 'vanilla', label: 'Vanilla' },
+                ]}
+                placeholder="Dropdown"
+              />
+            </div>
+            <br />
+            <div>
+              <Select
+                subLabel="multi select"
+                onChange={onChangeSelect}
+                options={[
+                  { value: 'chocolate', label: 'Chocolate' },
+                  { value: 'strawberry', label: 'Strawberry' },
+                  { value: 'vanilla', label: 'Vanilla' },
+                ]}
+                placeholder="Dropdown"
+                isMulti
+                closeMenuOnSelect={false}
+              />
+            </div>
+            <br />
+            <div>
+              <Select
+                subLabel="error select"
+                onChange={onChangeSelect}
+                options={[
+                  { value: 'chocolate', label: 'Chocolate' },
+                  { value: 'strawberry', label: 'Strawberry' },
+                  { value: 'vanilla', label: 'Vanilla' },
+                ]}
+                placeholder="Dropdown"
+                error
+              />
+            </div>
+          </div>
+        </div>
         <div>
           <Select
-            subLabel="default select"
+            subLabel="full width select"
             onChange={onChangeSelect}
             options={[
               { value: 'chocolate', label: 'Chocolate' },
               { value: 'strawberry', label: 'Strawberry' },
               { value: 'vanilla', label: 'Vanilla' },
             ]}
+            isFullWidth
             placeholder="Dropdown"
           />
-          <br />
-          <Select
-            subLabel="searchable select"
-            onChange={onChangeSelect}
-            isSearchable
-            options={[
-              { value: 'chocolate', label: 'Chocolate' },
-              { value: 'strawberry', label: 'Strawberry' },
-              { value: 'vanilla', label: 'Vanilla' },
-            ]}
-            placeholder="Dropdown"
-          />
-          <br />
-          <Select
-            subLabel="disabled select"
-            onChange={onChangeSelect}
-            disabled
-            options={[
-              { value: 'chocolate', label: 'Chocolate' },
-              { value: 'strawberry', label: 'Strawberry' },
-              { value: 'vanilla', label: 'Vanilla' },
-            ]}
-            placeholder="Dropdown"
-          />
-          <br />
-          <Select
-            subLabel="multi select"
-            onChange={onChangeSelect}
-            options={[
-              { value: 'chocolate', label: 'Chocolate' },
-              { value: 'strawberry', label: 'Strawberry' },
-              { value: 'vanilla', label: 'Vanilla' },
-            ]}
-            placeholder="Dropdown"
-            isMulti
-            closeMenuOnSelect={false}
-          />
-          <br />
-          <Select
-            subLabel="error select"
-            onChange={onChangeSelect}
-            options={[
-              { value: 'chocolate', label: 'Chocolate' },
-              { value: 'strawberry', label: 'Strawberry' },
-              { value: 'vanilla', label: 'Vanilla' },
-            ]}
-            placeholder="Dropdown"
-            error
-          />
-          <br />
-          <Input
-            label="error"
-            placeholder="Error input"
-            error
-            value={inputValue2}
-            onChange={(value) => setInputValue2(value)}
-          />
-          <Input
-            label="icon left input"
-            placeholder="icon left input"
-            icon={{
-              type: IconTypes.close,
-              position: 'left',
-            }}
-            value={inputValue3}
-            onChange={(value) => setInputValue3(value)}
-          />
-
-          <Input
-            label="input with label"
-            placeholder="icon right input"
-            icon={{
-              type: IconTypes.date,
-              position: 'right',
-              iconColor: 'warning',
-            }}
-            value={inputValue4}
-            onChange={(value) => setInputValue4(value)}
-          />
-          <Input
-            placeholder="disabled input"
-            label="disabled input"
-            disabled
-            value={inputValue5}
-            onChange={(value) => setInputValue5(value)}
-          />
-          <Input
-            placeholder="number input"
-            label="number input"
-            type="number"
-            value={inputValue5}
-            onChange={(value) => setInputValue5(value)}
-          />
-          <div style={{ width: '100%' }}>
-            <Input
-              label="full width input"
-              icon={{
-                type: IconTypes.date,
-                position: 'right',
-                iconColor: 'warning',
-              }}
-              type="password"
-              placeholder="full width input"
-              value={inputValue6}
-              onChange={(value) => setInputValue6(value)}
-            />
-          </div>
         </div>
         <div className={style.container} style={{ textAlign: 'right' }}>
           <Button onClick={() => setToggleSidebar(!toggleSidebar)}>toggle sidebar</Button>
@@ -318,90 +274,6 @@ const Examples = () => {
           />
           <ProfileLabel name="Big img bottom" textPosition="bottom" src="" imageSize={100} />
           <ProfileLabel name="Big text top" textPosition="top" src="" fontSize={30} />
-        </div>
-        <div className={style.flex}>
-          <Datepicker
-            name="ici"
-            label="selected date"
-            value={dateSelected}
-            onChange={(dateS: string, date: Date) => {
-              console.log(dateS, date);
-              setDateSelected(date);
-            }}
-          />
-          <Datepicker
-            name="here"
-            label="selected date"
-            value={dateSelected}
-            onChange={(dateS: string, date: Date) => {
-              console.log(dateS, date);
-              setDateSelected(date);
-            }}
-          />
-          <Datepicker
-            label="placeholder date"
-            value={dateSelectedNull}
-            placeholder="Choose a date"
-            onChange={(dateS: string, date: Date) => {
-              console.log(dateS, date);
-              setDateSelectedNull(date);
-            }}
-          />
-          <Datepicker
-            label="error date picker"
-            value={dateSelectedError}
-            placeholder="Choose a date"
-            error
-            onChange={(dateS: string, date: Date) => {
-              console.log(dateS, date);
-              setDateSelectedError(date);
-            }}
-          />
-          <Datepicker
-            label="disabled date picker"
-            value={dateSelectedNull}
-            placeholder="Choose a date"
-            disabled
-            onChange={(dateS: string, date: Date) => {
-              console.log(dateS, date);
-              setDateSelectedError(date);
-            }}
-          />
-        </div>
-        <div style={{ margin: '16px 0' }}>
-          <Datepicker
-            label="read only date picker"
-            value={dateSelected}
-            isFullWidth
-            readOnly
-            onChange={(dateS: string, date: Date) => {
-              console.log(dateS, date);
-              setDateSelected(date);
-            }}
-          />
-          <br />
-          <TableCard
-            filters={
-              <>
-                <Select
-                  onChange={onChangeSelect}
-                  options={[
-                    { value: 'chocolate', label: 'Chocolate' },
-                    { value: 'strawberry', label: 'Strawberry' },
-                    { value: 'vanilla', label: 'Vanilla' },
-                  ]}
-                  placeholder="Dropdown"
-                />
-              </>
-            }
-            actions={
-              <>
-                <Button>Primary button</Button>
-              </>
-            }
-          >
-            content table card
-          </TableCard>
         </div>
       </div>
     </>

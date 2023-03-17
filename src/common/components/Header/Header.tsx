@@ -7,20 +7,21 @@ type HeaderProps = {
   leftActions: ReactNode | ReactNode[];
   rightActions: ReactNode | ReactNode[];
   mobileActions: ReactNode | ReactNode[];
+  onClick: () => void;
 };
 
-const Header = ({ leftActions, rightActions, mobileActions }: HeaderProps) => {
+const Header = ({ leftActions, rightActions, mobileActions, onClick }: HeaderProps) => {
   const [visible, setVisible] = useState(false);
   return (
     <div className={styles.mainContainer}>
       <div className={styles.container}>
-        <div className={styles.hamburger} onClick={() => setVisible((prev) => !prev)}>
+        <div className={styles.hamburger} onClick={onClick}>
           <Icon type={IconTypes.hamburger} iconColor="white" />
         </div>
         <div className={styles.leftContainer}>{leftActions}</div>
         <div className={styles.rightContainer}>{rightActions}</div>
       </div>
-      <div className={`${styles.mobileContainer} ${visible ? styles.displayMobile : ''}`}>{mobileActions}</div>
+      <div className={`${styles.mobileContainer} ${styles.displayMobile}`}>{mobileActions}</div>
     </div>
   );
 };
