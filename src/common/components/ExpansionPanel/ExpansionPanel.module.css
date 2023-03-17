@@ -21,10 +21,6 @@
   font-weight: 400;
 }
 
-.expanded {
-  padding: 16px 32px;
-}
-
 .icon {
   padding: 0 6px;
   border-radius: 50%;
@@ -33,4 +29,16 @@
 .icon:hover {
   cursor: pointer;
   background: var(--light-gray);
+}
+
+.accordian {
+  transition: 0.1s linear;
+  max-height: 0;
+  overflow: hidden;
+  padding: 16px 32px;
+}
+
+.accordian.active {
+  transition: 0.1s linear;
+  max-height: 90vh;
 }

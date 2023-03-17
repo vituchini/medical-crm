@@ -1,5 +1,5 @@
 import Icon, { IconTypes } from '../Icon/Icon';
-import { ReactNode, useState } from 'react';
+import { ReactNode, useRef, useState } from 'react';
 
 import styles from './ExpansionPanel.module.css';
 
@@ -11,6 +11,7 @@ type ExpansionPanelProps = {
 
 const ExpansionPanel = ({ title, header, children }: ExpansionPanelProps) => {
   const [expanded, setExpanded] = useState(false);
+  const accordian = useRef<any>();
   return (
     <div className={styles.container}>
       <div className={styles.header}>
@@ -22,11 +23,9 @@ const ExpansionPanel = ({ title, header, children }: ExpansionPanelProps) => {
         </div>
         <div>{header}</div>
       </div>
-      {expanded && (
-        <div className={styles.expanded}>
-          <div>{children}</div>
-        </div>
-      )}
+      <div className={`${styles.accordian} ${expanded ? styles.active : ''}`}>
+        <div>{children}</div>
+      </div>
     </div>
   );
 };
