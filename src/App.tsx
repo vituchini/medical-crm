@@ -1,16 +1,16 @@
-import React from 'react';
-import { Navigate, Route, Routes } from 'react-router-dom';
-
-import { PATHS } from './common/constants/routes';
-import { LocalStorage, SessionStorage } from './utils/storage';
 import './App.css';
 
-import PrivateRouter from './PrivateRouter';
+import { LocalStorage, SessionStorage } from './utils/storage';
+import { Navigate, Route, Routes } from 'react-router-dom';
 
-import { Login } from './Auth';
-import Logout from './Logout/Logout';
 import Examples from './Examples/Examples';
-import Main from "./Main/Main";
+import Login from './Login/Login';
+import Logout from './Logout/Logout';
+import Main from './Main/Main';
+import { PATHS } from './common/constants/routes';
+import PrivateRouter from './PrivateRouter';
+import React from 'react';
+import { SignIn } from './Auth';
 
 function App() {
   const sessionToken = SessionStorage.get('access_token');
@@ -22,22 +22,18 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path={PATHS.AUTH.LOGIN} element={<a href="/signin">Login</a>} /> {/*TODO*/}
-
-        <Route path={PATHS.AUTH.SIGN_IN} element={<Login />} />
+        <Route path={PATHS.AUTH.LOGIN} element={<Login />} />
+        <Route path={PATHS.AUTH.SIGN_IN} element={<SignIn />} />
         <Route path={PATHS.EXAMPLES} element={<Examples />} />
-
         <Route
           path="/*"
           element={
             <PrivateRouter>
-              <Main/>
+              <Main />
             </PrivateRouter>
           }
         />
-
         <Route path={PATHS.LOGOUT} element={<Logout />} />
-
         <Route path="*" element={<Navigate to={PATHS.AUTH.LOGIN} />} />
       </Routes>
     </div>

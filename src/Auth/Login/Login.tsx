@@ -6,7 +6,7 @@ import style from './style.module.css';
 import { useNavigate } from 'react-router-dom';
 import { useUserContext } from '../../ContextProvider';
 
-const Login = () => {
+const SignIn = () => {
   const [email, setEmail] = useState<any>(null);
   const [password, setPassword] = useState<any>(null);
   const { setCurrentUser } = useUserContext();
@@ -42,4 +42,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default SignIn;

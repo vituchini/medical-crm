@@ -1,3 +1,3 @@
-import Login from './Login/Login';
+import SignIn from './Login/Login';
 
-export { Login };
+export { SignIn };

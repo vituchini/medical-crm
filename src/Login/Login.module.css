@@ -1,0 +1,74 @@
+body {
+  background: linear-gradient(180deg, #e0d3e5 0%, #ffffff 100%);
+}
+.loginContainer {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loginBg {
+  position: absolute;
+  width: 1200px;
+  height: 698px;
+  left: calc(50% - 1200px / 2);
+  top: 40px;
+  background: url('../assets/image/bg-login.png');
+  opacity: 0.5;
+}
+
+.loginContainer .loginContent {
+  width: 350px;
+  border-radius: 4px;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.loginContent .loginHeader {
+  background: linear-gradient(90deg, var(--secondary) 0%, var(--primary) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 24px;
+}
+
+.loginContent .loginHeader .text {
+  font-weight: 400;
+  font-size: 24px;
+  color: var(--white);
+}
+
+.loginContent .loginBody {
+  background: var(--white);
+  padding: 30px;
+  display: flex;
+  gap: 16px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.loginContent .loginBody .title,
+.loginContent .loginBody button,
+.loginContent .loginBody .copyright {
+  display: block;
+}
+
+.loginContent .loginBody .title {
+  color: var(--primary);
+  font-size: 24px;
+  text-align: center;
+  display: block;
+}
+
+.loginContent .loginBody .text {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.loginContent .loginBody .copyright {
+  display: block;
+  text-align: center;
+  font-size: 12px;
+  color: var(--gray);
+}

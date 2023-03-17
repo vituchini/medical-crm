@@ -8,5 +8,6 @@
   "errors.504": "Functionality temporarily unavailable",
   "errors.BAD_PARSING": "Server response parsing error",
   "Previous": "Vorige",
-  "Next": "Volgende"
+  "Next": "Volgende",
+  "Login": "Inloggen"
 }
