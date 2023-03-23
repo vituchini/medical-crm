@@ -1,5 +1,5 @@
-body {
-  background: linear-gradient(180deg, #e0d3e5 0%, #ffffff 100%);
+.loginSection {
+  background: linear-gradient(180deg, var(--pink) 0%, var(--pink) 100%);
 }
 .loginContainer {
   height: 100vh;
@@ -14,7 +14,7 @@ body {
   height: 698px;
   left: calc(50% - 1200px / 2);
   top: 40px;
-  background: url('../assets/image/bg-login.png');
+  background: url('../../assets/image/bg-login.png');
   opacity: 0.5;
 }
 
@@ -64,6 +64,11 @@ body {
 .loginContent .loginBody .text {
   font-weight: bold;
   font-size: 14px;
+}
+
+.loginContent .loginBody .link {
+  width: 100%;
+  text-decoration: none;
 }
 
 .loginContent .loginBody .copyright {

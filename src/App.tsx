@@ -1,11 +1,10 @@
 import './App.css';
 
 import { LocalStorage, SessionStorage } from './utils/storage';
+import { Login, SignIn } from './Auth';
 import { Navigate, Route, Routes } from 'react-router-dom';
 
-import Client from './Examples/Client';
 import Examples from './Examples/Examples';
-import { Login } from './Auth';
 import Logout from './Logout/Logout';
 import Main from './Main/Main';
 import { PATHS } from './common/constants/routes';
@@ -22,10 +21,9 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path={PATHS.AUTH.LOGIN} element={<a href="/signin">Login</a>} /> {/*TODO*/}
-        <Route path={PATHS.AUTH.SIGN_IN} element={<Login />} />
+        <Route path={PATHS.AUTH.LOGIN} element={<Login />} />
+        <Route path={PATHS.AUTH.SIGN_IN} element={<SignIn />} />
         <Route path={PATHS.EXAMPLES} element={<Examples />} />
-        <Route path={'client'} element={<Client />} />
         <Route
           path="/*"
           element={
