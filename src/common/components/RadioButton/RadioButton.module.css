@@ -29,10 +29,10 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 18px;
-  height: 18px;
+  width: 16px;
+  height: 16px;
   border-radius: 50%;
-  border: 1px solid var(--primary);
+  border: 1px solid var(--light-gray);
   background: var(--white);
 }
 
@@ -50,6 +50,6 @@
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  border: 8px solid var(--primary);
+  border: 6px solid var(--primary);
   background: var(--white);
 }
