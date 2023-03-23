@@ -49,6 +49,7 @@ const Examples = () => {
 
   const [toggleSidebar, setToggleSidebar] = useState(false);
 
+  const [inputValue1, setInputValue1] = useState('');
   const [inputValue2, setInputValue2] = useState('');
   const [inputValue3, setInputValue3] = useState('');
   const [inputValue4, setInputValue4] = useState('');
@@ -419,14 +420,16 @@ const Examples = () => {
             <h3>Expanded</h3>
           </ExpansionPanel>
         </div>
-
         <div style={{ marginTop: '50px' }}>
           <div className="table-container">
             <table className="table">
-              <Thead sort={sort} onSort={(data) => {
-                console.log(data);
-                setSort(data)
-              }}>
+              <Thead
+                sort={sort}
+                onSort={(data) => {
+                  console.log(data);
+                  setSort(data);
+                }}
+              >
                 <th data-sort-field="Name">Sort column 1</th>
                 <th data-sort-field="Email">Sort column 2</th>
                 <th>3 Column</th>
@@ -435,16 +438,16 @@ const Examples = () => {
                 <th>6 Column</th>
               </Thead>
               <tbody>
-              {[1, 2, 3, 4, 5].map((_, index) =>
-                <tr key={index}>
-                  <td>Test</td>
-                  <td>Test</td>
-                  <td>Test</td>
-                  <td>Test</td>
-                  <td>Test</td>
-                  <td>Test</td>
-                </tr>
-              )}
+                {[1, 2, 3, 4, 5].map((_, index) => (
+                  <tr key={index}>
+                    <td>Test</td>
+                    <td>Test</td>
+                    <td>Test</td>
+                    <td>Test</td>
+                    <td>Test</td>
+                    <td>Test</td>
+                  </tr>
+                ))}
               </tbody>
             </table>
           </div>
@@ -453,10 +456,13 @@ const Examples = () => {
         <div style={{ marginTop: '50px' }}>
           <div className="table-container">
             <table className="table">
-              <Thead sort={sort} onSort={(data) => {
-                console.log(data);
-                setSort(data)
-              }}>
+              <Thead
+                sort={sort}
+                onSort={(data) => {
+                  console.log(data);
+                  setSort(data);
+                }}
+              >
                 <th data-sort-field="Name">Sort column 1</th>
                 <th data-sort-field="Email">Sort column 2</th>
                 <th>3 Column</th>
@@ -465,8 +471,8 @@ const Examples = () => {
                 <th>6 Column</th>
               </Thead>
               <tbody>
-              <TableNoData colSpan={6}>No data</TableNoData>
-              <TableLoader/>
+                <TableNoData colSpan={6}>No data</TableNoData>
+                <TableLoader />
               </tbody>
             </table>
           </div>

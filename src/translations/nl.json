@@ -9,5 +9,18 @@
   "errors.BAD_PARSING": "Server response parsing error",
   "Previous": "Vorige",
   "Next": "Volgende",
-  "Login": "Inloggen"
+  "Add client": "Cliënt toevoegen",
+  "Find clients...": "Zoek cliënten...",
+  "All": "Alle",
+  "Filter": "Filteren",
+  "Relation": "Relatie",
+  "Username": "Gebruikersnaam",
+  "SSN": "BSN",
+  "First name": "Voornaam",
+  "Last name": "Achternaam",
+  "Address": "Adres",
+  "Country": "Land",
+  "City": "Stad",
+  "Postal code": "Postcode",
+  "Status": "Status"
 }
