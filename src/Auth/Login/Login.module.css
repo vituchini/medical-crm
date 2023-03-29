@@ -1,5 +1,6 @@
 .loginSection {
   background: linear-gradient(180deg, var(--pink) 0%, var(--pink) 100%);
+  width: 100%;
 }
 .loginContainer {
   height: 100vh;
@@ -9,7 +10,7 @@
 }
 
 .loginBg {
-  position: absolute;
+  position: fixed;
   width: 1200px;
   height: 698px;
   left: calc(50% - 1200px / 2);

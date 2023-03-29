@@ -1,5 +1,6 @@
 import { Button, Icon } from '../../common/components';
 
+import { Link } from 'react-router-dom';
 import { PATHS } from '../../common/constants/routes';
 import React from 'react';
 import style from './Login.module.css';
@@ -8,7 +9,7 @@ import { useTranslation } from 'react-i18next';
 const Login = () => {
   const { t } = useTranslation();
   return (
-    <section className={style.loginSection}>
+    <div className={style.loginSection}>
       <div className={style.loginContainer}>
         <span className={style.loginBg} />
         <div className={style.loginContent}>
@@ -16,16 +17,16 @@ const Login = () => {
             <span className={style.text}>{t('Login')}</span>
           </div>
           <div className={style.loginBody}>
-            <a className={style.link} href={PATHS.AUTH.SIGN_IN}>
+            <Link className={style.link} to={PATHS.AUTH.SIGN_IN}>
               <Button size="fullWidth">
                 <span className={style.text}>{t('Login')}</span>{' '}
               </Button>
-            </a>
+            </Link>
             <span className={style.copyright}>2022 © by Impegno.</span>
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 };
 
