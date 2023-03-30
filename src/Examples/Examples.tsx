@@ -114,8 +114,9 @@ const Examples = () => {
       </Sidebar>
       <div className={style.container}>
         <div className={style.header}>Component examples</div>
-
-        <Breadcrumbs breadcrumbs={[{ title: 'title' }, { title: 'subtitle' }, { title: 'subsubtitle' }]} />
+        <div className={style.flex}>
+          <Breadcrumbs breadcrumbs={[{ title: 'title' }, { title: 'subtitle' }, { title: 'subsubtitle' }]} />
+        </div>
 
         <RadioButton name="radio" value={radio} options={radioItems} onChange={setRadio} column />
 

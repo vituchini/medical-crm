@@ -1,7 +1,7 @@
 .container {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
+  column-gap: 8px;
   font-weight: 400;
   font-size: 14px;
   line-height: 20px;
@@ -23,7 +23,7 @@
 }
 
 .list:not(:last-child) a:after {
-  padding-left: 6px;
+  padding-left: 8px;
   color: var(--black);
   content: '/';
 }
@@ -31,7 +31,7 @@
 .list:last-child {
   flex: 0 0 100%;
   font-size: 24px;
-  line-height: 34px;
+  line-height: 36px;
 }
 
 .list:last-child a {
