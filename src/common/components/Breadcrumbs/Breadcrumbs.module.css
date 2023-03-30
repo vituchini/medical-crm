@@ -28,13 +28,16 @@
   content: '/';
 }
 
-.list:last-child {
+.title:last-child {
   flex: 0 0 100%;
   font-size: 24px;
   line-height: 36px;
 }
 
-.list:last-child a {
+.title:last-child a {
   color: var(--primary);
+}
+
+.list:last-child a {
   cursor: default;
 }

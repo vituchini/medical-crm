@@ -7,11 +7,12 @@ type BreadcrumbType = {
 
 type BreadcrumbsProps = {
   breadcrumbs: BreadcrumbType[];
+  noTitle?: boolean;
 };
-export const Breadcrumbs = ({ breadcrumbs }: BreadcrumbsProps) => (
+export const Breadcrumbs = ({ breadcrumbs, noTitle }: BreadcrumbsProps) => (
   <ul className={styles.container}>
     {breadcrumbs.map((breadcrumb, i) => (
-      <li className={styles.list} key={i}>
+      <li className={`${styles.list} ${noTitle ? '' : styles.title}`} key={i}>
         <a href={breadcrumb.path || '#'}>{breadcrumb.title}</a>
       </li>
     ))}
